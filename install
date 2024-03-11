@@ -10,7 +10,7 @@ pacman -S sudo networkmanager vim firefox libreoffice flameshot
 pacman -S xorg xorg-server intel-ucode nvtop plasma-meta
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra
 pacman -S git openssh fakeroot base-devel fuse2 unrar
-flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita
+flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine
 
 # Enable service
 sudo systemctl enable bluetooth.service
