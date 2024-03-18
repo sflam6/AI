@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Please enter EFI paritition: (example /dev/sda1 or /dev/nvme0n1p1)"
-read EFI
-
-echo "Please enter SWAP paritition: (example /dev/sda2)"
-read SWAP
-
-echo "Please enter Root(/) paritition: (example /dev/sda3)"
-read ROOT 
-
 echo "Please enter your username"
 read USER 
 
@@ -18,23 +9,23 @@ read PASSWORD
 # make filesystems
 echo -e "\nCreating Filesystems...\n"
 
-mkfs.vfat -F32 -n "EFISYSTEM" "${EFI}"
-mkswap "${SWAP}"
-swapon "${SWAP}"
-mkfs.ext4 -L "ROOT" "${ROOT}"
+mkfs.fat -F32 /dev/nvme0n1p1
+mkswap /dev/nvme0n1p2
+swapon /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
 
 # mount target
-mount -t ext4 "${ROOT}" /mnt
+mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/boot
-mount -t vfat "${EFI}" /mnt/boot/
+mount /dev/nvme0n1p1 /mnt/boot/
 
 echo "--------------------------------------"
 echo "-- INSTALLING Arch Linux BASE on Main Drive       --"
 echo "--------------------------------------"
-pacstrap /mnt base base-devel --noconfirm --needed
+pacstrap -K /mnt base base-devel --noconfirm --needed
 
 # kernel
-pacstrap /mnt linux linux-firmware --noconfirm --needed
+pacstrap -K /mnt linux linux-firmware --noconfirm --needed
 
 echo "--------------------------------------"
 echo "-- Setup Dependencies               --"
@@ -45,20 +36,6 @@ pacstrap /mnt networkmanager vim intel-ucode bluez bluez-utils blueman openssh f
 # fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "--------------------------------------"
-echo "-- Bootloader Installation  --"
-echo "--------------------------------------"
-bootctl install --path /mnt/boot
-echo "default arch.conf" >> /mnt/boot/loader/loader.conf
-cat <<EOF > /mnt/boot/loader/entries/arch.conf
-title Arch Linux
-linux /vmlinuz-linux
-initrd /initramfs-linux.img
-options root=${ROOT} rw
-EOF
-
-
-cat <<REALEND > /mnt/next.sh
 useradd -m $USER
 usermod -aG wheel,storage,power,audio $USER
 echo $USER:$PASSWORD | chpasswd
@@ -100,6 +77,12 @@ echo "-------------------------------------------------"
 echo "Install Complete, You can reboot now"
 echo "-------------------------------------------------"
 
-REALEND
+#Grub
+pacman -S grub efibootmgr
+mount /dev/nvme0n1p1 /boot
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
 
-arch-chroot /mnt sh next.sh
+unmount /mnt/boot
+unmount /mnt
+shutdown now
