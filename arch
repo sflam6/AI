@@ -23,6 +23,11 @@ pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# Grub
+pacstrap -K /mnt grub efibootmgr --noconfirm --needed
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
+
 # cat command into eof.sh so to run it in chroot
 cat <<REALEND > /mnt/eof.sh
 # Display
@@ -30,8 +35,9 @@ pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
 # Desktop environment
 pacman -S sudo networkmanager vim firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
+pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
-pacman -S sddm plasma plasma-workspace  packagekit-qt5 --noconfirm --needed
+pacman -S sddm packagekit-qt5 --noconfirm --needed
 pacman -S git openssh fakeroot base-devel bluez bluez-utils blueman --noconfirm --needed
 
 # Users
@@ -56,12 +62,6 @@ systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
-
-# Grub
-pacman -S grub efibootmgr --noconfirm --needed
-mount /dev/nvme0n1p1 /boot
-grub-mkconfig -o /boot/grub/grub.cfg
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 
 exit 
 unmount /mnt/boot
