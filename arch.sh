@@ -33,6 +33,7 @@ pacman -S networkmanager vim intel-ucode bluez bluez-utils blueman openssh faker
 pacman -S plasma sddm plasma-meta plasma-workspace packagekit-qt5 --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
 pacman -S xorg pulseaudioxorg-server pipewire wireplumber pipewire-pulse nvtop --noconfirm --needed
+pacman -S firefox noto-fonts-cjk noto-fonts-emoji
 
 useradd -m $USER
 usermod -aG wheel,storage,power,audio,storage $USER
