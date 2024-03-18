@@ -2,6 +2,7 @@
 sudo pacman -Syy && -Syu
 sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
 sudo pacman -S firefox flameshot steam fuse2 unrar libreoffeice-still --noconfirm --needed
+sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
 
 # Flatpak packages
 flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
