@@ -47,7 +47,7 @@ echo "--------------------------------------"
 echo "-- Setup Dependencies               --"
 echo "--------------------------------------"
 
-pacstrap /mnt networkmanager network-manager-applet wireless_tools nano intel-ucode bluez bluez-utils blueman git --noconfirm --needed
+pacstrap /mnt networkmanager vim intel-ucode bluez bluez-utils blueman openssh fakeroot git --noconfirm --needed
 
 # fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -78,7 +78,7 @@ sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
-ln -sf /usr/share/zoneinfo/Asia/Kathmandu /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/HongKong /etc/localtime
 hwclock --systohc
 
 echo "arch" > /etc/hostname
@@ -92,26 +92,16 @@ echo "-------------------------------------------------"
 echo "Display and Audio Drivers"
 echo "-------------------------------------------------"
 
-pacman -S xorg pulseaudio --noconfirm --needed
+pacman -S xorg pulseaudioxorg-server pipewire wireplumber pipewire-pulse nvtop --noconfirm --needed
 
 systemctl enable NetworkManager bluetooth
 
 #DESKTOP ENVIRONMENT
-if [[ $DESKTOP == '1' ]]
-then 
-    pacman -S gnome gdm --noconfirm --needed
-    systemctl enable gdm
-elif [[ $DESKTOP == '2' ]]
-then
-    pacman -S plasma sddm kde-applications --noconfirm --needed
-    systemctl enable sddm
-elif [[ $DESKTOP == '3' ]]
-then
-    pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter --noconfirm --needed
-    systemctl enable lightdm
-else
-    echo "You have choosen to Install Desktop Yourself"
-fi
+pacman -S plasma sddm plasma-meta plasma-workspace packagekit-qt5 --noconfirm --needed
+pacman -S firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
+pacman -S flameshot steam fuse2 unrar libreoffeice-still --noconfirm --needed
+pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
+systemctl enable sddm sshd
 
 echo "-------------------------------------------------"
 echo "Install Complete, You can reboot now"
