@@ -15,13 +15,6 @@ read USER
 echo "Please enter your password"
 read PASSWORD 
 
-echo "Please choose Your Desktop Environment"
-echo "1. GNOME"
-echo "2. KDE"
-echo "3. XFCE"
-echo "4. NoDesktop"
-read DESKTOP
-
 # make filesystems
 echo -e "\nCreating Filesystems...\n"
 
@@ -108,6 +101,5 @@ echo "Install Complete, You can reboot now"
 echo "-------------------------------------------------"
 
 REALEND
-
 
 arch-chroot /mnt sh next.sh
