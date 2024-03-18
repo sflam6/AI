@@ -38,10 +38,6 @@ pacman -S firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
 pacman -S flameshot steam fuse2 unrar libreoffeice-still --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
 pacman -S xorg pulseaudioxorg-server pipewire wireplumber pipewire-pulse nvtop --noconfirm --needed
-systemctl enable sddm.service
-systemctl enable sshd.service
-systemctl enable bluetooth.service
-systemctl enable NetworkManager.service
 
 useradd -m $USER
 usermod -aG wheel,storage,power,audio,storage $USER
@@ -61,6 +57,12 @@ echo "ArchLinux" > /etc/hostname
 echo "127.0.0.1	localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1	ArchlLinux" >> /etc/hosts
+
+# systemservices
+systemctl enable sddm.service
+systemctl enable sshd.service
+systemctl enable bluetooth.service
+systemctl enable NetworkManager.service
 
 #Grub
 pacman -S grub efibootmgr --noconfirm --needed
