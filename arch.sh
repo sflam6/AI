@@ -28,9 +28,6 @@ arch-chroot /mnt
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
-#firmware
-pacman -S linux-firmware --noconfirm --needed
-
 #DESKTOP ENVIRONMENT
 pacman -S networkmanager vim intel-ucode bluez bluez-utils blueman openssh fakeroot git --noconfirm --needed
 pacman -S plasma sddm plasma-meta plasma-workspace packagekit-qt5 --noconfirm --needed
