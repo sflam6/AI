@@ -22,7 +22,6 @@ pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
 
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
 
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
@@ -34,13 +33,13 @@ pacman -S sddm plasma plasma-workspace  packagekit-qt5 --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
 pacman -S git openssh fakeroot base-devel bluez bluez-utils blueman --noconfirm --needed
 
-# User
+# Next.sh
+cat <<REALEND > /mnt/next.sh
 useradd -m $USER
-usermod -aG wheel,storage,power,audio,storage $USER
+usermod -aG wheel,storage,power,audio,video $USER
 echo $USER:$PASSWORD | chpasswd
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
-# Language and zoneinfo
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
@@ -48,19 +47,23 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ln -sf /usr/share/zoneinfo/Asia/HongKong /etc/localtime
 hwclock --systohc
 
-# Host
 echo "ArchLinux" >> /etc/hostname
-echo "127.0.0.1	localhost" >> /etc/hosts
-echo "::1 localhost" >> /etc/hosts
-echo "127.0.1.1	ArchLinux" >> /etc/hosts
+cat <<EOF > /etc/hosts
+127.0.0.1	localhost
+::1 localhost
+127.0.1.1	ArchLinux
+EOF
 
-# systemservices
 systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
 
-#Grub
+REALEND
+
+arch-chroot /mnt sh next.sh
+
+# Grub
 pacman -S grub efibootmgr --noconfirm --needed
 mount /dev/nvme0n1p1 /boot
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
