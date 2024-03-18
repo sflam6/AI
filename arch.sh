@@ -6,41 +6,41 @@ read USER
 echo "Please enter your password"
 read PASSWORD 
 
+# Formatting
 mkfs.fat -F32 /dev/nvme0n1p1
 mkswap /dev/nvme0n1p2
 swapon /dev/nvme0n1p2
 mkfs.ext4 /dev/nvme0n1p3
 
-# mount target
+# Mount target
 mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot/
 
-# kernel
-pacstrap -K /mnt base base-devel --noconfirm --needed
-pacstrap -K /mnt linux linux-firmware --noconfirm --needed
+# Linux kernel
+pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
 
-# fstab
+# Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
-
 arch-chroot /mnt
 
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
-#DESKTOP ENVIRONMENT
-pacman -S networkmanager vim intel-ucode bluez bluez-utils blueman openssh fakeroot git --noconfirm --needed
-pacman -S plasma sddm plasma-meta plasma-workspace packagekit-qt5 --noconfirm --needed
+# Desktop environment
+pacman -S sudo networkmanager vim firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
+pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
+pacman -S sddm plasma plasma-workspace  packagekit-qt5 --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
-pacman -S xorg pulseaudioxorg-server pipewire wireplumber pipewire-pulse nvtop --noconfirm --needed
-pacman -S firefox noto-fonts-cjk noto-fonts-emoji
+pacman -S git openssh fakeroot base-devel bluez bluez-utils blueman --noconfirm --needed
 
+# User
 useradd -m $USER
 usermod -aG wheel,storage,power,audio,storage $USER
 echo $USER:$PASSWORD | chpasswd
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
-# language and zoneinfo
+# Language and zoneinfo
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
