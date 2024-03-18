@@ -17,8 +17,9 @@ mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot/
 
-# Linux kernel
+# Linux kernel and Grub
 pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+pacstrap -K /mnt grub efibootmgr --noconfirm --needed
 
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
