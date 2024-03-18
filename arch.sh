@@ -32,7 +32,7 @@ pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 pacman -S linux-firmware --noconfirm --needed
 
 #DESKTOP ENVIRONMENT
-pacmans -S networkmanager vim intel-ucode bluez bluez-utils blueman openssh fakeroot git --noconfirm --needed
+pacman -S networkmanager vim intel-ucode bluez bluez-utils blueman openssh fakeroot git --noconfirm --needed
 pacman -S plasma sddm plasma-meta plasma-workspace packagekit-qt5 --noconfirm --needed
 pacman -S firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
 pacman -S flameshot steam fuse2 unrar libreoffeice-still --noconfirm --needed
