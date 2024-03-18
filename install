@@ -6,7 +6,7 @@ sudo pacman -S packagekit-qt5 fwupd flatpak
 sudo pacman -S linux linux-headers
 
 # Applications installation
-sudo pacman -S sudo networkmanager vim firefox libreoffice flameshot
+sudo pacman -S sudo networkmanager vim firefox flameshot
 sudo pacman -S xorg xorg-server intel-ucode nvtop plasma-meta steam
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra
 sudo pacman -S git openssh fakeroot base-devel fuse2 unrar libreoffice-still
