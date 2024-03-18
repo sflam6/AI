@@ -17,6 +17,7 @@ pacman -S linux-firmware
 pacman -S sudo networkmanager vim firefox noto-fonts-cjk noto-fonts-emoji
 pacman -S xorg xorg-server pipewire wireplumber pipewire-pulse intel-ucode nvtop
 pacman -S sddm plasma-meta plasma-workspace packagekit-qt5
+pacman -S flameshot steam fuse2 unrar libreoffeice-still
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra
 pacman -S git openssh fakeroot base-devel
 
@@ -30,6 +31,7 @@ echo "127.0.1.1 ArchLinux" >> /etc/hosts
 systemctl enable sddm.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
+systemctl enable bluetooth.service
 
 # User related
 passwd
