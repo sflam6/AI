@@ -2,10 +2,10 @@
 mount /dev/nvme0n1p3 /mnt
 mount /dev/nvme0n1p1 /mnt/boot
 
-cat <<REALEND > /mnt/grub.sh
+cat <<REALEND > /mnt/next.sh
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
 REALEND
 
-arch-chroot /mnt 
+arch-chroot /mnt sh next.sh
