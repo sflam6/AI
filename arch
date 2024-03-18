@@ -23,10 +23,14 @@ pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# Grub
+# Grub command into grub.sh so to run it in chroot
+cat <<REALEND > /mnt/boot/grub.sh
 pacstrap -K /mnt grub efibootmgr --noconfirm --needed
-grub-mkconfig -o /boot/grub/grub.cfg
+mount /dev/nvme0n1p1 /boot
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+REALEND
 
 # cat command into eof.sh so to run it in chroot
 cat <<REALEND > /mnt/eof.sh
@@ -71,4 +75,5 @@ reboot now
 REALEND
 
 # chroot
+arch-chroot /mnt/boot sh grub.sh 
 arch-chroot /mnt sh eof.sh
