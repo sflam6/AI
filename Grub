@@ -1,6 +1,8 @@
 # Grub command into grub.sh so to run it in chroot
-mount /dev/nvme0n1p1 /boot
+mount /dev/nvme0n1p3 /mnt
+mount /dev/nvme0n1p1 /mnt/boot
+arch-chroot /mnt 
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
-REALEND
+reboot
