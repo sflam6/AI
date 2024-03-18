@@ -1,9 +1,7 @@
 # Display, firmware
 sudo pacman -Syy && -Syu
-sudo pacman -S mesa-vdpau
-sudo pacman -S linux-firmware 
-sudo pacman -S packagekit-qt5 fwupd flatpak
-sudo pacman -S linux linux-headers
+sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
+sudo pacman -S firefox flameshot steam fuse2 unrar libreoffeice-still --noconfirm --needed
 
 # Flatpak packages
 flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
