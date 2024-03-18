@@ -75,5 +75,4 @@ reboot now
 REALEND
 
 # chroot
-arch-chroot /mnt/boot sh grub.sh 
 arch-chroot /mnt sh eof.sh
