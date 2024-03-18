@@ -1,4 +1,0 @@
-cp ~/archinstall/1 ~/
-cd
-chmod -x 1
-sh 1
