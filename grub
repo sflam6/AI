@@ -3,7 +3,7 @@ mount /dev/nvme0n1p3 /mnt
 mount /dev/nvme0n1p1 /mnt/boot
 
 cat <<REALEND > /mnt/next.sh
-pacman -S grub efibootmgr
+pacman -S grub efibootmgr --noconfirm --needed
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
