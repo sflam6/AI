@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Update, format, mount; nvme0n1p1-boot, nvme0n1p2-swap, nvme0n1p3-linuxsystem
 pacman -Syy && -Syu
 mkfs.fat -F32 /dev/nvme0n1p1
