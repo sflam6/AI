@@ -3,15 +3,7 @@
 sudo systemctl enable --now avahi-daemon
 sudo systemctl --user start sunshine
 sudo systemctl --user enable sunshine
-
-# yay
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
-# Drivers by yay
-yay -S mkinitcpio-firmware
+sudo systemctl enable power-profiles-daemon.service
 
 # ufw firewall
 sudo pacman -S ufw --noconfirm --needed
