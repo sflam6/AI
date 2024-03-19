@@ -32,15 +32,20 @@ pacman -S grub efibootmgr --noconfirm --needed
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Edit Pacman config
+sed -i 's/^#Color/Color/' /etc/pacman.conf
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed -i 's/^#Include/Include/' /etc/pacman.conf
+sed -i 's/^#[multilib]/[multilib]/' /etc/pacman.conf
+
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
 # Desktop environment
-pacman -S sudo networkmanager vim firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
-pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
+pacman -S git vim openssh fakeroot base-devel sddm networkmanager packagekit-qt5 --noconfirm --needed
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
-pacman -S sddm packagekit-qt5 --noconfirm --needed
-pacman -S git openssh fakeroot base-devel bluez bluez-utils blueman --noconfirm --needed
+pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland qt5-wayland qt6-wayland --noconfirm --needed
+pacman -S sudo  firefox noto-fonts-cjk noto-fonts-emoji partitionmanager --noconfirm --needed
 
 # Users
 echo $PASSWORD | passwd
