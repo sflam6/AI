@@ -15,3 +15,5 @@ makepkg -si
 
 # Drivers by yay
 yay -S mkinitcpio-firmware
+
+sudo reboot now
