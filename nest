@@ -24,29 +24,13 @@ pacstrap -K /mnt grub efibootmgr --noconfirm --needed
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# Grub command into grub.sh so to run it in chroot
-cat <<nest > /mnt/next.sh
-pacman -S grub efibootmgr --noconfirm --needed
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
-exit
-nest
-
-arch-chroot /mnt sh next.sh
-
-# cat command into eof.sh so to run it in chroot, next.sh in
-
+# cat command into eof.sh so to run it in chroot
 cat <<REALEND > /mnt/eof.sh
 
-cat <<nest > /mnt/next.sh
+# Grub
 pacman -S grub efibootmgr --noconfirm --needed
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
-exit
-REALEND
-
-arch-chroot /mnt sh next.sh
-
 
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
