@@ -7,6 +7,11 @@ sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --n
 # Flatpak packages
 flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine --noconfirm --needed
 
+# Enable service on boot
+sudo systemctl enable --now avahi-daemon
+sudo systemctl --user start sunshine
+sudo systemctl --user enable sunshine
+
 # yay
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
