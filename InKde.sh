@@ -5,7 +5,7 @@ sudo pacman -S flameshot steam fuse2 unrar libreoffeice-still --noconfirm --need
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra --noconfirm --needed
 
 # Flatpak packages
-flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
+flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine --noconfirm --needed
 
 # yay
 sudo pacman -S --needed git base-devel
@@ -17,7 +17,7 @@ makepkg -si
 yay -S mkinitcpio-firmware
 
 # ufw firewall
-sudo pacman -S ufw
+sudo pacman -S ufw --noconfirm --needed
 sudo ufw enable
 sudo systemctl enable ufw
 sudo systemctl start ufw
