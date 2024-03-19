@@ -26,3 +26,5 @@ sudo ufw allow 48000/udp
 sudo ufw allow 48002/udp
 sudo ufw allow 48010/udp
 sudo ufw reload
+
+sudo reboot now
