@@ -43,6 +43,7 @@ pacman -S sddm packagekit-qt5 --noconfirm --needed
 pacman -S git openssh fakeroot base-devel bluez bluez-utils blueman --noconfirm --needed
 
 # Users
+echo $PASSWORD | passwd
 useradd -m $USER
 usermod -aG wheel,storage,power,audio,video $USER
 echo $USER:$PASSWORD | chpasswd
