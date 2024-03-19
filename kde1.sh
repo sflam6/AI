@@ -6,39 +6,3 @@ sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfi
 
 # Flatpak packages
 flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
-
-# Enable service on boot
-sudo systemctl enable --now avahi-daemon
-sudo systemctl --user start sunshine
-sudo systemctl --user enable sunshine
-
-# yay
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
-# Drivers by yay
-yay -S mkinitcpio-firmware
-
-# ufw firewall
-sudo pacman -S ufw --noconfirm --needed
-sudo ufw enable
-sudo systemctl enable ufw
-sudo systemctl start ufw
-sudo ufw default allow outgoing
-sudo ufw default deny incoming
-sudo ufw allow ssh
-sudo ufw reload
-
-# sunshine firewall setting
-sudo ufw allow 47984/tcp
-sudo ufw allow 47989/tcp
-sudo ufw allow 48010/tcp
-sudo ufw allow 47988/udp
-sudo ufw allow 47998/udp
-sudo ufw allow 47999/udp
-sudo ufw allow 48000/udp
-sudo ufw allow 48002/udp
-sudo ufw allow 48010/udp
-sudo ufw reload
