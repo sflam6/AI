@@ -1,8 +1,8 @@
 # Edit pacman.conf
-cp ~/etc/pacman.conf ~/pacmanb.conf
+cp ~/etc/pacman.conf ~/pacman.conf
 sed 's/^#Colour/Colour/' /etc/pacman.conf
 sed 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-sed 's/^#[multilib]\#Include/[multilib]\Include/' /etc/pacman.conf
+sed 's/^[multilib]\Include/#[multilib]\#Include/' /etc/pacman.conf
 
 # Display, firmware
 sudo pacman -Syy && -Syu
