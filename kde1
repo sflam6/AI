@@ -1,3 +1,9 @@
+# Edit pacman.conf
+cp ~/etc/pacman.conf ~/pacmanb.conf
+sed 's/^#Colour/Colour/' /etc/pacman.conf
+sed 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed 's/^#[multilib]\#Include/[multilib]\Include/' /etc/pacman.conf
+
 # Display, firmware
 sudo pacman -Syy && -Syu
 sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
