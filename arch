@@ -62,18 +62,6 @@ sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linu
 sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
 
-# Flatpak packages
-flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
-
-# yay
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
-# Drivers by yay
-yay -S mkinitcpio-firmware
-
 # Users
 echo $PASSWORD | passwd
 useradd -m $USER
@@ -98,12 +86,12 @@ systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
 
-exit 
-unmount /mnt/boot
-unmount /mnt
-reboot now
-
 REALEND
 
 # chroot
 arch-chroot /mnt sh eof.sh
+
+exit 
+unmount /mnt/boot
+unmount /mnt
+reboot now
