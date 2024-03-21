@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+echo "Please enter EFI paritition: (example /dev/sda1 or /dev/nvme0n1p1)"
+read EFI
+
+echo "Please enter SWAP paritition: (example /dev/sda2)"
+read SWAP
+
+echo "Please enter Root(/) paritition: (example /dev/sda3)"
+read ROOT
+
 echo "Please enter your username"
 read USER 
 
@@ -7,15 +16,15 @@ echo "Please enter your password"
 read PASSWORD 
 
 # Formatting
-mkfs.fat -F32 /dev/nvme0n1p1
-mkswap /dev/nvme0n1p2
-swapon /dev/nvme0n1p2
-mkfs.ext4 /dev/nvme0n1p3
+mkfs.fat -F32 "${EFI}"
+mkswap "${SWAP}"
+swapon "${SWAP}"
+mkfs.ext4 "${ROOT}"
 
 # Mount target
-mount /dev/nvme0n1p3 /mnt
+mount "${ROOT}" /mnt
 mkdir /mnt/boot
-mount /dev/nvme0n1p1 /mnt/boot/
+mount "${EFI}" /mnt/boot/
 
 # Linux kernel and Grub
 pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
