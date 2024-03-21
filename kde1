@@ -2,7 +2,7 @@
 sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sudo sed -i 's/#Include/Include/g' /etc/pacman.conf
-sudo sed -i 's/#[mulilib]/[mulilib]/g' /etc/pacman.conf
+sudo sed -i 's/#[multilib]/[multilib]/g' /etc/pacman.conf
 
 # Display, firmware
 sudo pacman -Syy && -Syu
