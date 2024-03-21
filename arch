@@ -42,9 +42,9 @@ grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Edit pacman.conf
-sed 's/Colour/#Colour/' /etc/pacman.conf
-sed 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-sed 's/#[multilib]\#Include/[multilib]\Include/' /etc/pacman.conf
+sed -i 's/Colour/#Colour/' /etc/pacman.conf
+sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed -i 's/#[multilib]\#Include/[multilib]\Include/' /etc/pacman.conf
 
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
@@ -87,13 +87,7 @@ systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
 
-
 REALEND
 
 # chroot
 arch-chroot /mnt sh eof.sh
-
-exit 
-unmount /mnt/boot
-unmount /mnt
-reboot now
