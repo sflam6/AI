@@ -1,12 +1,20 @@
 # Edit pacman.conf
 sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sudo sed -i 90a\[multilib] /etc/pacman.conf
+sudo sed -i 91a\Inclue = /etc/pacman.d/mirrorlist /etc/pacman.conf
 
 # Display, firmware
 sudo pacman -Syy && -Syu
 sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
 sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
+
+sudo sed -i 5a\GTK_IM_MODULE=fcitx /etc/environment
+sudo sed -i 6a\QT_IM_MODULE=fcitx /etc/environment
+sudo sed -i 7a\XMODIFIERS=@im=fcitx /etc/environment
+sudo sed -i 8a\SDL_IM_MODULE=fcitx /etc/environment
+sudo sed -i 9a\GLFW_IM_MODULE=fcitx /etc/environment
 
 # Flatpak packages
 flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
