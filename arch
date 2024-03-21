@@ -41,6 +41,11 @@ pacman -S grub efibootmgr --noconfirm --needed
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Edit pacman.conf
+sed 's/Colour/#Colour/' /etc/pacman.conf
+sed 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed 's/#[multilib]\#Include/[multilib]\Include/' /etc/pacman.conf
+
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
@@ -49,6 +54,25 @@ pacman -S git vim openssh fakeroot base-devel sddm networkmanager packagekit-qt5
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
+pacman -S sudo vivaldi --noconfirm --needed
+
+# Display, firmware
+sudo pacman -Syy && -Syu
+sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
+sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
+sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
+
+# Flatpak packages
+flatpak install flathub com.spotify.Client com.dropbox.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine
+
+# yay
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Drivers by yay
+yay -S mkinitcpio-firmware
 
 # Users
 echo $PASSWORD | passwd
