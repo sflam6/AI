@@ -75,6 +75,7 @@ echo "LANG=zh_TW.UTF-8" >> /etc/locale.conf
 
 ln -sf /usr/share/zoneinfo/Asia/HongKong /etc/localtime
 hwclock --systohc
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
 
 echo "ArchLinux" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -85,6 +86,7 @@ systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
+
 
 REALEND
 
