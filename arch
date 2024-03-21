@@ -54,7 +54,7 @@ pacman -S git vim openssh fakeroot base-devel sddm networkmanager packagekit-qt5
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
-pacman -S sudo vivaldi --noconfirm --needed
+pacman -S sudo vivaldi power-profiles-daemon --noconfirm --needed
 
 # Display, firmware
 sudo pacman -Syy && -Syu
