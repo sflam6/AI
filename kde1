@@ -1,8 +1,8 @@
 # Edit pacman.conf
 sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-sudo sed -i 's/#[multilib]/[multilib]/ /etc/pacman.conf
-sudo sed -i 91a\Include = /etc/pacman.d/mirrorlist /etc/pacman.conf
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo pacman -Syy &&-Syu
 
 # Display, firmware
 sudo pacman -Syy && -Syu
