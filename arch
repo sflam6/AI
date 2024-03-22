@@ -44,23 +44,24 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Edit pacman.conf
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-sed -i "/\[multilib]\/,/Include/"'s/^#//' /etc/pacman.conf
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+pacman -Syy &&-Syu
 
 # Display
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
 # Desktop environment
 pacman -S git vim openssh fakeroot base-devel sddm networkmanager packagekit-qt5 --noconfirm --needed
-pacman -S xorg xorg-server pipewire wireplumber pulseaudio pipewire-pulse intel-ucode nvtop --noconfirm --needed
+pacman -S xorg xorg-server pipewire wireplumber pulseaudio intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji --noconfirm --needed
 pacman -S sudo vivaldi power-profiles-daemon --noconfirm --needed
 
 # Display, firmware
-sudo pacman -Syy && -Syu
-sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
-sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
-sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
+pacman -Syy && -Syu
+pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
+pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
+pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
 
 # Users
 echo $PASSWORD | passwd
