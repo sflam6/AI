@@ -46,3 +46,5 @@ Mod4 + F' ~/.xbindkeysrc
 
 killall xbindkeys
 xbindkeys
+
+rm /eof.sh
