@@ -10,6 +10,7 @@ sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linu
 sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
 
+#Edit environment
 sudo sed -i '$a\
 GTK_IM_MODULE=fcitx\
 QT_IM_MODULE=fcitx\
