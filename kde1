@@ -34,5 +34,15 @@ GLFW_IM_MODULE=fcitx' /etc/environment
 sudo pacman -S xbindkeys --noconfirm --needed
 touch ~/.xbindkeysrc
 
+sudo sed -i '$a\
+\
+# Flameshot\
+"flameshot gui"\
+Mod4 + KP_Subtract\
+\
+# Vivaldi\
+"Vivaldi-stable"\
+Mod4 + F' ~/.xbindkeysrc
+
 killall xbindkeys
 xbindkeys
