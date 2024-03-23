@@ -22,10 +22,15 @@ makepkg -si
 # Drivers by yay
 yay -S mkinitcpio-firmware
 
-#Edit environment
+# Edit environment
 sudo sed -i '$a\
 GTK_IM_MODULE=fcitx\
 QT_IM_MODULE=fcitx\
 XMODIFIERS=@im=fcitx\
 SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
+
+# Edit keyboard shortcuts
+sudo pacman -S xbindkeys --noconfirm --needed
+touch ~/.xbindkeysrc
+
