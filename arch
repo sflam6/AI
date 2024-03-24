@@ -85,7 +85,7 @@ echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
 # Edit keyboard shortcuts
 sudo pacman -S xbindkeys --noconfirm --needed
-touch ~/.xbindkeysrc
+xbindkeys -d > ~/.xbindkeysrc
 
 sudo sed -i '$a\
 \
@@ -97,13 +97,24 @@ Mod4 + KP_Subtract\
 "Vivaldi-stable"\
 Mod4 + F' ~/.xbindkeysrc
 
-killall xbindkeys
-xbindkeys
+cat <<xbe > /etc/systemd/system/xbindkeys.service
+[Unit]
+Description=Auto-start xbindkeys
+After=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xbindkeys
+
+[Install]
+WantedBy=graphical.target
+xbe
 
 systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
+systemctl enable xbindkeys.service
 
 REALEND
 
