@@ -61,7 +61,7 @@ pacman -S sudo vivaldi power-profiles-daemon --noconfirm --needed
 pacman -Syy && -Syu
 pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
 pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
-pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
+pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi xbindkeys --noconfirm --needed
 
 # Users
 echo $PASSWORD | passwd
@@ -82,6 +82,23 @@ echo "ArchLinux" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
+
+# Edit keyboard shortcuts
+sudo pacman -S xbindkeys --noconfirm --needed
+touch ~/.xbindkeysrc
+
+sudo sed -i '$a\
+\
+# Flameshot\
+"flameshot gui"\
+Mod4 + KP_Subtract\
+\
+# Vivaldi\
+"Vivaldi-stable"\
+Mod4 + F' ~/.xbindkeysrc
+
+killall xbindkeys
+xbindkeys
 
 systemctl enable sddm.service
 systemctl enable sshd.service
