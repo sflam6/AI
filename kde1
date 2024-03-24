@@ -30,21 +30,4 @@ XMODIFIERS=@im=fcitx\
 SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
 
-# Edit keyboard shortcuts
-sudo pacman -S xbindkeys --noconfirm --needed
-touch ~/.xbindkeysrc
-
-sudo sed -i '$a\
-\
-# Flameshot\
-"flameshot gui"\
-Mod4 + KP_Subtract\
-\
-# Vivaldi\
-"Vivaldi-stable"\
-Mod4 + F' ~/.xbindkeysrc
-
-killall xbindkeys
-xbindkeys
-
 rm /eof.sh
