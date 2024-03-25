@@ -110,6 +110,17 @@ ExecStart=/usr/bin/xbindkeys
 WantedBy=graphical.target
 xbe
 
+sudo cat <<asxbk > ~/.config/autostart/xbindkeys.desktop
+
+[Desktop Entry]
+Type=Application
+Name=Xbindkeys
+Exec=xbindkeys
+X-GNOME-Autostart-enabled=true
+
+asxbk
+
+
 systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
