@@ -83,44 +83,6 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
-# Edit keyboard shortcuts
-sudo pacman -S xbindkeys --noconfirm --needed
-xbindkeys -d > ~/.xbindkeysrc
-
-sudo sed -i '$a\
-\
-# Flameshot\
-"flameshot gui"\
-Mod4 + KP_Subtract\
-\
-# Vivaldi\
-"Vivaldi-stable"\
-Mod4 + F' ~/.xbindkeysrc
-
-cat <<xbe > /etc/systemd/system/xbindkeys.service
-[Unit]
-Description=Auto-start xbindkeys
-After=graphical.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/xbindkeys
-
-[Install]
-WantedBy=graphical.target
-xbe
-
-sudo cat <<asxbk > ~/.config/autostart/xbindkeys.desktop
-
-[Desktop Entry]
-Type=Application
-Name=Xbindkeys
-Exec=xbindkeys
-X-GNOME-Autostart-enabled=true
-
-asxbk
-
-
 systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
