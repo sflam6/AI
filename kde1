@@ -21,6 +21,7 @@ makepkg -si
 
 # Drivers by yay
 yay -S mkinitcpio-firmware
+yay -S xpadneo-dkms
 
 # Edit environment
 sudo sed -i '$a\
