@@ -1,0 +1,1 @@
+sudo pacman -S cups cups-pdf print-manager system-config printer
