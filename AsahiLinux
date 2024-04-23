@@ -1,0 +1,10 @@
+# install
+curl https://alx.sh | sh
+
+# Uninstall
+## check the disk info
+diskutil list
+
+## del boot up partition
+https://youtu.be/nMnWTq2H-N0?si=rtjqaaAofUyLZqa8
+diskutil eraseVolume JHFS+ drive /dev/disk0s4
