@@ -1,6 +1,14 @@
 sudo pacman -S cups cups-pdf print-manager system-config printer
 
-## Hall printer with Fedora
+## Printer IPs
+hall printer address: http://192.168.0.20/printer
+23 printer address: http://192.168.0.10/printer
+
+## printer with Fedora
 sudo dnf install cups cups-pdf cups-client system-config-printer
-#printer address: http://192.168.0.20/printer
+
+## pinter with arch
+sudo pacman -S cups cups-pdf ghostcript 
+systemctl start cups.service
+
 #ref:https://forums.fedoraforum.org/showthread.php?324543-how-to-set-my-RICOH-printer
