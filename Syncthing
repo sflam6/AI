@@ -1,0 +1,10 @@
+Syncthing
+#archlinux
+yay -S syncthingtray
+
+#activate service
+sudo systemctl enable syncthing@$USER.service
+sudo systemctl start syncthing@$USER.service
+
+#WebUI
+ http://localhost:8384/
