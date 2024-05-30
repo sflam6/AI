@@ -1,10 +1,16 @@
 Syncthing
+
 #archlinux
-yay -S syncthingtray
+discovery>syncthingy
+
+#firewall
+sudo ufw allow 22000/tcp
+sudo ufw allow 22000/udp
+sudo ufw allow 21027/udp
 
 #activate service
 sudo systemctl enable syncthing@$USER.service
 sudo systemctl start syncthing@$USER.service
 
 #WebUI
- http://localhost:8384/
+http://localhost:8384/
