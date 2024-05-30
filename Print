@@ -12,4 +12,9 @@ sudo pacman -S cups cups-pdf ghostcript
 systemctl start cups.service
 # can tweak driver settings in printer setting
 
+#Tweak
+search for the ppd of MPC3000, update it in the webUI of CUPS
+PPD: https://www.openprinting.org/printer/Ricoh/Ricoh-Aficio_MP_C3000
+webUI: http://localhost:631/printers/
+
 #ref:https://forums.fedoraforum.org/showthread.php?324543-how-to-set-my-RICOH-printer
