@@ -1,5 +1,5 @@
 sudo pacman -Syy &&-Syu
-sudo pacman -S cups cups-pdf print-manage nss-mdns
+sudo pacman -S cups cups-pdf print-manager nss-mdns
 sudo systemctl restart avahi-daemon.service
 
 replace the following line
