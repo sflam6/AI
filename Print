@@ -13,7 +13,7 @@ systemctl start cups.service
 # can tweak driver settings in printer setting
 
 #Tweak
-search for the ppd of MPC3000, update it in the webUI of CUPS
+search for the ppd of MPC3000, update it in the webUI of CUPS, use the pxlcolor one
 PPD: https://www.openprinting.org/printer/Ricoh/Ricoh-Aficio_MP_C3000
 webUI: http://localhost:631/printers/
 
