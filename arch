@@ -27,7 +27,7 @@ mkdir /mnt/boot
 mount "${EFI}" /mnt/boot/
 
 # Linux kernel and Grub
-pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
+pacstrap -K /mnt base linux-zen linux-zen-headers linux-firmware --noconfirm --needed
 pacstrap -K /mnt grub efibootmgr --noconfirm --needed
 
 # Fstab
@@ -51,17 +51,28 @@ pacman -Syy &&-Syu
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
 # Desktop environment
-pacman -S git vim openssh fakeroot base-devel sddm networkmanager packagekit-qt5 --noconfirm --needed
+pacman -S git vim openssh fakeroot base-devel systemd meson dbus sddm networkmanager packagekit-qt6 --noconfirm --needed
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pulseaudio-bluetooth intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji okular --noconfirm --needed
-pacman -S sudo vivaldi power-profiles-daemon Okular kwallet kwalletmanager --noconfirm --needed
+pacman -S sudo power-profiles-daemon Okular kwallet kwalletmanager partitionmanager --noconfirm --needed
 
-# Display, firmware
+# Firmware, software
 pacman -Syy && -Syu
-pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
-pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
-pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi xbindkeys --noconfirm --needed
+pacman -S fwupd flatpak --noconfirm --needed
+pacman -S flameshot fuse2 unrar libreoffice-still-zh-tw --noconfirm --needed
+pacman -S qt5-wayland qt6-wayland  --noconfirm --needed
+pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons --noconfirm --needed
+pacman -S avahi xbindkeys --noconfirm --needed
+
+# Gaming
+pacman -S steam lutris xow wine winetricks mono --noconfirm --needed
+pacman -S wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls --noconfirm --needed
+pacman -S mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error --noconfirm --needed
+pacman -S lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo --noconfirm --needed
+pacman -S sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama --noconfirm --needed
+pacman -S ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 --noconfirm --needed
+pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader --noconfirm --needed
 
 # Users
 echo $PASSWORD | passwd
@@ -90,6 +101,7 @@ systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
 systemctl enable xbindkeys.service
+systemctl enable xow.service
 
 REALEND
 
