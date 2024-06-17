@@ -63,7 +63,7 @@ pacman -S fwupd flatpak --noconfirm --needed
 pacman -S flameshot fuse2 unrar libreoffice-still-zh-tw --noconfirm --needed
 pacman -S qt5-wayland qt6-wayland  --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons --noconfirm --needed
-pacman -S avahi xbindkeys --noconfirm --needed
+pacman -S avahi  --noconfirm --needed
 
 # Gaming
 pacman -S steam lutris wine winetricks mono --noconfirm --needed
@@ -100,7 +100,6 @@ systemctl enable sddm.service
 systemctl enable sshd.service
 systemctl enable bluetooth.service
 systemctl enable NetworkManager.service
-systemctl enable xbindkeys.service
 
 REALEND
 
