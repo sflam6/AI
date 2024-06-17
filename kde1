@@ -2,7 +2,7 @@
 sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-sudo pacman -Syy &&-Syu
+sudo pacman -Syy && -Syu
 
 # Display, firmware
 sudo pacman -Syy && -Syu
@@ -23,7 +23,6 @@ makepkg -si
 # Drivers by yay
 yay -S mkinitcpio-firmware
 yay -S xpadneo-dkms
-yay -S xow
 
 # Edit environment
 sudo sed -i '$a\
@@ -32,8 +31,5 @@ QT_IM_MODULE=fcitx\
 XMODIFIERS=@im=fcitx\
 SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
-
-# active systemctl
-sudo systemctl enable xow.service
 
 rm /eof.sh
