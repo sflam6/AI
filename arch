@@ -51,7 +51,7 @@ pacman -Syy &&-Syu
 pacman -S vulkan-radeon libva-mesa-driver mesa-vdpau --noconfirm --needed
 
 # Desktop environment
-pacman -S git vim openssh fakeroot base-devel systemd meson dbus sddm networkmanager packagekit-qt6 --noconfirm --needed
+pacman -S git wget vim openssh fakeroot base-devel systemd meson dbus sddm networkmanager packagekit-qt6 --noconfirm --needed
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pulseaudio-bluetooth intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji okular --noconfirm --needed
