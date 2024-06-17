@@ -1,0 +1,27 @@
+cd ~
+wget https://github.com/LizardByte/Sunshine/releases/latest/download/sunshine.AppImage
+
+chmod +x sunshine.AppImage
+./sunshine.AppImage --install
+
+sudo tee /etc/udev/rules.d/60-sunshine.rules
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+sudo modprobe uinput
+
+sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
+
+sudo ufw allow 47984/tcp
+sudo ufw allow 47989/tcp
+sudo ufw allow 48010/tcp
+sudo ufw allow 47988/udp
+sudo ufw allow 47998/udp
+sudo ufw allow 47999/udp
+sudo ufw allow 48000/udp
+sudo ufw allow 48002/udp
+sudo ufw allow 48010/udp
+sudo ufw reload
+
+sudo systemctl enable --now avahi-daemon
+systemctl --user start sunshine
+systemctl --user enable sunshine
