@@ -25,10 +25,6 @@ SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
 
 # Enable system control
-sudo systemctl enable sddm.service
-sudo systemctl enable sshd.service
-sudo systemctl enable bluetooth.service
-sudo systemctl enable NetworkManager.service
 sudo systemctl enable ufw
 sudo systemctl start ufw
 
