@@ -1,36 +1,36 @@
 #!/bin/bash
 
-# 檢查使用者權限
+# Check user privilege
 if [ $(whoami) != "root" ]; then
-  echo "請以 root 身分執行此指令！"
+  echo "Please run this script with root privileges!"
   exit 1
 fi
 
-# 檢查硬碟
-if [ $# -ne 1 ]; then
-  echo "請指定要格式化的硬碟！"
-  echo "用法：$0 /dev/sdX"
+# Check for disk argument
+if [ $# -ne 2 ]; then
+  echo "Please specify the disk to format and desired swap size!"
+  echo "Usage: $0 /dev/sdX <swap_size_in_GiB>"
   exit 1
 fi
 
 disk=$1
+swap_size=$2
 
-# 檢查硬碟是否存在
+# Check if disk exists
 if [ ! -block "$disk" ]; then
-  echo "硬碟 $disk 不存在！"
+  echo "Disk $disk does not exist!"
   exit 1
 fi
 
-# 檢查硬碟容量
+# Check disk size
 size=$(fdisk -s $disk)
 
-# 建立 GPT 分割表
+# Create GPT partition table
 parted $disk << EOF
 mklabel gpt
 EOF
 
-# 建立 EFI 分割區
-parted $disk << EOF
+# Create EFI partition
 parted $disk << EOF
 set 1 flags boot
 mkpart primary 1 1 512MiB
@@ -38,26 +38,29 @@ set 1 type fat32
 label 1 efi
 EOF
 
-# 建立 swap 分割區
+# Calculate remaining space for data partition after swap
+data_start=$(($size - $(($swap_size * 1024)) * 1024 * 1024))
+
+# Create swap partition with specified size
 parted $disk << EOF
 set 2 flags swap
-mkpart primary 2 512MiB $(($size - 65GiB))
+mkpart primary 2 512MiB $data_start
 label 2 swap
 EOF
 
-# 建立 Linux 資料分割區
+# Create Linux data partition with remaining space
 parted $disk << EOF
-mkpart primary 3 $(($size - 65GiB))
+mkpart primary 3 $data_start $(($size - 1))
 label 3 linux-data
 EOF
 
-# 格式化 EFI 分割區
+# Format EFI partition
 mkfs.fat -F32 $disk1
 
-# 格式化 swap 分割區
+# Format swap partition
 mkswap $disk2
 
-# 格式化 Linux 資料分割區
+# Format Linux data partition
 mkfs.ext4 $disk3
 
-echo "硬碟 $disk 已成功格式化！"
+echo "Disk $disk formatted successfully!"
