@@ -1,17 +1,5 @@
-# Edit pacman.conf
-sudo sed -i 's/#Color/Color/' /etc/pacman.conf
-sudo sed -i 's/#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-sudo pacman -Syy && -Syu
-
-# Display, firmware
-sudo pacman -Syy && -Syu
-sudo pacman -S mesa-vdpau linux-firmware packagekit-qt5 fwupd flatpak linux linux-headers --noconfirm --needed
-sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw qt5-wayland qt6-wayland partitionmanager power-profiles-daemon --noconfirm --needed
-sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi print-manager --noconfirm --needed
-
 # Flatpak packages
-flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine net.davidotek.pupgui2 org.inkscape.Inkscape 
+flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine net.davidotek.pupgui2 org.inkscape.Inkscape 
 flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
 
 # yay
@@ -23,6 +11,10 @@ makepkg -si
 # Drivers by yay
 yay -S mkinitcpio-firmware
 yay -S xpadneo-dkms
+
+# Apps by yay
+yay -S sunshine
+yay -S anime-games-launcher-bin 
 
 # Edit environment
 sudo sed -i '$a\
