@@ -109,52 +109,6 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
-# Flatpak packages
-flatpak install flathub com.spotify.Client org.winehq.Wine net.davidotek.pupgui2 com.github.zocker_160.SyncThingy
-flatpak install camp.nook.nookdesktop 
-
-# Drivers by yay
-yay -S mkinitcpio-firmware
-yay -S xpadneo-dkms
-
-# Apps by yay
-yay -S sunshine
-yay -S anime-games-launcher-bin
-
-# Edit environment
-sudo sed -i '$a\
-GTK_IM_MODULE=fcitx\
-QT_IM_MODULE=fcitx\
-XMODIFIERS=@im=fcitx\
-SDL_IM_MODULE=fcitx\
-GLFW_IM_MODULE=fcitx' /etc/environment
-
-# Enable system control
-systemctl enable sddm.service
-systemctl enable sshd.service
-systemctl enable bluetooth.service
-systemctl enable NetworkManager.service
-systemctl enable ufw
-systemctl start ufw
-
-## Firewall settings
-# sunshine firewall setting
-sudo ufw allow 47984/tcp
-sudo ufw allow 47989/tcp
-sudo ufw allow 48010/tcp
-sudo ufw allow 47988/udp
-sudo ufw allow 47998/udp
-sudo ufw allow 47999/udp
-sudo ufw allow 48000/udp
-sudo ufw allow 48002/udp
-sudo ufw allow 48010/udp
-
-# syncthing firewall setting
-sudo ufw allow 22000/tcp
-sudo ufw allow 22000/udp
-sudo ufw allow 21027/udp
-sudo ufw reload
-
 REALEND
 
 # chroot
