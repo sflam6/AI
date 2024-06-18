@@ -47,3 +47,4 @@ sudo ufw allow 21027/udp
 sudo ufw reload
 
 sudo rm /eof.sh
+rm -rf ~/ai
