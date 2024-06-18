@@ -64,6 +64,7 @@ pacman -S fwupd flatpak --noconfirm --needed
 pacman -S flameshot fuse2 unrar libreoffice-still-zh-tw --noconfirm --needed
 pacman -S qt5-wayland qt6-wayland xwaylandvideobridge --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons --noconfirm --needed
+pacman -S krita inkscape --noconfirm --needed
 pacman -S avahi  --noconfirm --needed
 
 # Gaming
@@ -83,7 +84,6 @@ echo $USER:$PASSWORD | chpasswd
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 sed -i '/root ALL=(ALL:ALL) ALL/a\user ALL=(ALL:ALL) ALL' /etc/sudoers
 
-
 sed -i 's/^#zh_TW.UTF-8 UTF-8/zh_TW.UTF-8 UTF-8/' /etc/locale.gen
 sed -i 's/^#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
 sed -i 's/^#zh_HK.UTF-8 UTF-8/zh_HK.UTF-8 UTF-8/' /etc/locale.gen
@@ -101,7 +101,7 @@ echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
 # Flatpak packages
 flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine net.davidotek.pupgui2 org.inkscape.Inkscape 
-flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
+flatpak install camp.nook.nookdesktop 
 
 # Drivers by yay
 yay -S mkinitcpio-firmware
