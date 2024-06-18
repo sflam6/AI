@@ -37,4 +37,19 @@ set 2 swap on
 mkpart Linux ext4 513mb+($swap_size)gb 100%
 EOF
 
+# Calculate remaining space for data partition after swap
+data_start=$(($size - $(($swap_size * 1024)) * 1024 * 1024))
+
+# Create swap partition with specified size
+parted $disk << EOF
+mkpart swap linux-swap 512MiB $data_start
+set 2 swap on
+EOF
+
+# Create Linux data partition with remaining space
+parted $disk << EOF
+mkpart Linux ext4 $($data_start + 1) 100%
+set 3 linux-home on
+EOF
+
 echo "Disk $disk formatted successfully!"
