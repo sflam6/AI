@@ -31,9 +31,9 @@ sgdisk -z $1
 sgdisk -n 1:0:+$2m $1
 sgdisk -n 2:0:+$3g $1
 sgdisk -n 3:0:0 $1
-sgdisk -t 1:ef00
-sgdisk -t 2:8200
-sgdisk -t 3:8300
+sgdisk -t 1:ef00 $1
+sgdisk -t 2:8200 $1
+sgdisk -t 3:8300 $1
 
 # Print message
 echo "Disk $disk formatted successfully!"
