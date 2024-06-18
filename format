@@ -32,9 +32,9 @@ parted $disk << EOF
 mklabel gpt
 mkpart efi fat32 1 512mb
 set 1 boot on
-mkpart swap linux-swap 512mb 512mb+$swap_size
+mkpart swap linux-swap 512mb 512mb+($swap_size)gb
 set 2 swap on
-mkpart Linux ext4 512mb+$swap_size 100%
+mkpart Linux ext4 513mb+($swap_size)gb 100%
 EOF
 
-echo "Disk $disk formatted successfully!"s
+echo "Disk $disk formatted successfully!"
