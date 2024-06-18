@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-pacman -S reflector
+pacman -S reflector --noconfirm --needed
 reflector -c taiwan -l 20 -p https --save /etc/pacman.d/mirrorlist
 
+clear
 lsblk
 
 echo "Please enter EFI paritition: (example /dev/sda1 or /dev/nvme0n1p1)"
