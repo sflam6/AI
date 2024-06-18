@@ -11,8 +11,8 @@ sudo pacman -S flameshot steam fuse2 unrar libreoffice-still-zh-tw  qt5-wayland 
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra avahi --noconfirm --needed
 
 # Flatpak packages
-flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine net.davidotek.pupgui2 --noconfirm --needed
-flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo --noconfirm --needed
+flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine dev.lizardbyte.app.Sunshine net.davidotek.pupgui2 
+flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
 
 # yay
 sudo pacman -S --needed git base-devel
