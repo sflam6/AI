@@ -27,7 +27,7 @@ if [ "$confirm_delete" != "y" ]; then
   exit 1
 fi
 
-sgdisk -z
+sgdisk -z $1
 sgdisk -n 1:0:+$2m $1
 sgdisk -n 2:0:+$3g $1
 sgdisk -n 3:0:0 $1
