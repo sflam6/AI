@@ -56,7 +56,7 @@ pacman -S xorg xorg-server pipewire wireplumber pipewire-pulse intel-ucode amd-u
 pacman -S bluedevil bluez bluez-utils --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji okular telegram-desktop --noconfirm --needed
-pacman -S sudo power-profiles-daemon okular kwallet kwalletmanager partitionmanager --noconfirm --needed
+pacman -S sudo power-profiles-daemon okular kwallet kwalletmanager partitionmanager print-manager --noconfirm --needed
 
 # Firmware, software
 pacman -Syy && -Syu
@@ -98,6 +98,26 @@ echo "ArchLinux" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
+
+# Flatpak packages
+flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine net.davidotek.pupgui2 org.inkscape.Inkscape 
+flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
+
+# Drivers by yay
+yay -S mkinitcpio-firmware
+yay -S xpadneo-dkms
+
+# Apps by yay
+yay -S sunshine
+yay -S anime-games-launcher-bin
+
+# Edit environment
+sudo sed -i '$a\
+GTK_IM_MODULE=fcitx\
+QT_IM_MODULE=fcitx\
+XMODIFIERS=@im=fcitx\
+SDL_IM_MODULE=fcitx\
+GLFW_IM_MODULE=fcitx' /etc/environment
 
 systemctl enable sddm.service
 systemctl enable sshd.service
