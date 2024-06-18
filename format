@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacrman -S parted --noconfirm -needed
+pacman -S parted --noconfirm -needed
 
 # Check user privilege
 if [ $(whoami) != "root" ]; then
