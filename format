@@ -37,3 +37,5 @@ sgdisk -t 3:8300 $1
 
 # Print message
 echo "Disk $disk formatted successfully!"
+
+cp ~/ai/arch ~/arch
