@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# 檢查使用者權限
+if [ $(whoami) != "root" ]; then
+  echo "請以 root 身分執行此指令！"
+  exit 1
+fi
+
+# 檢查硬碟
+if [ $# -ne 1 ]; then
+  echo "請指定要格式化的硬碟！"
+  echo "用法：$0 /dev/sdX"
+  exit 1
+fi
+
+disk=$1
+
+# 檢查硬碟是否存在
+if [ ! -block "$disk" ]; then
+  echo "硬碟 $disk 不存在！"
+  exit 1
+fi
+
+# 檢查硬碟容量
+size=$(fdisk -s $disk)
+
+# 建立 GPT 分割表
+parted $disk << EOF
+mklabel gpt
+EOF
+
+# 建立 EFI 分割區
+parted $disk << EOF
+parted $disk << EOF
+set 1 flags boot
+mkpart primary 1 1 512MiB
+set 1 type fat32
+label 1 efi
+EOF
+
+# 建立 swap 分割區
+parted $disk << EOF
+set 2 flags swap
+mkpart primary 2 512MiB $(($size - 65GiB))
+label 2 swap
+EOF
+
+# 建立 Linux 資料分割區
+parted $disk << EOF
+mkpart primary 3 $(($size - 65GiB))
+label 3 linux-data
+EOF
+
+# 格式化 EFI 分割區
+mkfs.fat -F32 $disk1
+
+# 格式化 swap 分割區
+mkswap $disk2
+
+# 格式化 Linux 資料分割區
+mkfs.ext4 $disk3
+
+echo "硬碟 $disk 已成功格式化！"
