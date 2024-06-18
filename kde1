@@ -1,8 +1,7 @@
 # Flatpak packages
-flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine net.davidotek.pupgui2 org.inkscape.Inkscape 
-flatpak --user remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
+flatpak install flathub com.spotify.Client org.winehq.Wine net.davidotek.pupgui2 com.github.zocker_160.SyncThingy
+flatpak install camp.nook.nookdesktop 
 
-# yay
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -14,7 +13,7 @@ yay -S xpadneo-dkms
 
 # Apps by yay
 yay -S sunshine
-yay -S anime-games-launcher-bin 
+yay -S anime-games-launcher-bin
 
 # Edit environment
 sudo sed -i '$a\
@@ -23,5 +22,31 @@ QT_IM_MODULE=fcitx\
 XMODIFIERS=@im=fcitx\
 SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
+
+# Enable system control
+sudo systemctl enable sddm.service
+sudo systemctl enable sshd.service
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
+sudo systemctl enable ufw
+sudo systemctl start ufw
+
+## Firewall settings
+# sunshine firewall setting
+sudo ufw allow 47984/tcp
+sudo ufw allow 47989/tcp
+sudo ufw allow 48010/tcp
+sudo ufw allow 47988/udp
+sudo ufw allow 47998/udp
+sudo ufw allow 47999/udp
+sudo ufw allow 48000/udp
+sudo ufw allow 48002/udp
+sudo ufw allow 48010/udp
+
+# syncthing firewall setting
+sudo ufw allow 22000/tcp
+sudo ufw allow 22000/udp
+sudo ufw allow 21027/udp
+sudo ufw reload
 
 rm /eof.sh
