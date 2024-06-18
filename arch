@@ -55,7 +55,7 @@ pacman -S git wget vim openssh fakeroot base-devel systemd meson dbus sddm netwo
 pacman -S xorg xorg-server pipewire wireplumber pulseaudio pulseaudio-bluetooth intel-ucode nvtop --noconfirm --needed
 pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --noconfirm --needed
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji okular --noconfirm --needed
-pacman -S sudo power-profiles-daemon Okular kwallet kwalletmanager partitionmanager --noconfirm --needed
+pacman -S sudo power-profiles-daemon okular kwallet kwalletmanager partitionmanager --noconfirm --needed
 
 # Firmware, software
 pacman -Syy && -Syu
