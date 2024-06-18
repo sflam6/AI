@@ -109,6 +109,12 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
+# system services
+sudo systemctl enable sddm.service
+sudo systemctl enable sshd.service
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
+
 REALEND
 
 # chroot
