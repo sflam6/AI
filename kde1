@@ -1,5 +1,5 @@
 # Flatpak packages
-flatpak install flathub com.spotify.Client org.winehq.Wine net.davidotek.pupgui2 com.github.zocker_160.SyncThingy
+flatpak install flathub com.spotify.Client org.winehq.Wine net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq. Logseq
 flatpak install camp.nook.nookdesktop 
 
 # yay
