@@ -113,3 +113,4 @@ REALEND
 
 # chroot
 arch-chroot /mnt sh eof.sh
+cp ~/ai/kde1 ~/kde1
