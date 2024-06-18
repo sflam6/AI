@@ -100,7 +100,7 @@ echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 ArchLinux" >> /etc/hosts
 
 # Flatpak packages
-flatpak install flathub com.spotify.Client org.kde.krita org.winehq.Wine net.davidotek.pupgui2 org.inkscape.Inkscape 
+flatpak install flathub com.spotify.Client org.winehq.Wine net.davidotek.pupgui2
 flatpak install camp.nook.nookdesktop 
 
 # Drivers by yay
