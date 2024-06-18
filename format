@@ -1,0 +1,54 @@
+Bash
+
+#!/bin/bash
+
+# Check user privilege
+if [ $(whoami) != "root" ]; then
+  echo "Please run this script with root privileges!"
+  exit 1
+fi
+
+# Check for disk argument
+if [ $# -ne 2 ]; then
+  echo "Please specify the disk to format and desired swap size!"
+  echo "Usage: $0 /dev/sdX <swap_size_in_GiB>"
+  exit 1
+fi
+
+disk=$1
+swap_size=$2
+
+# Check if disk exists
+if [ ! -block "$disk" ]; then
+  echo "Disk $disk does not exist!"
+  exit 1
+fi
+
+# Clear existing partition table (careful!)
+gdisk $disk << EOF
+z
+EOF
+
+# Create GPT partition table
+gdisk $disk << EOF
+n
+1
+
++512M
+ef00
+n
+2
+
++$swap_sizeG
+8200
+n
+3
+
+
+8300
+w
+y
+EOF
+
+# Print message
+echo "Disk $disk formatted successfully!"
