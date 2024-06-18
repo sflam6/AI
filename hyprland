@@ -1,4 +1,0 @@
-sudo dnf install git libva libdrm python3-pip
-git clone https://github.com/JaKooLit/Fedora-Hyprland.git
-chmod +x ~/Fedora-Hyprland/install.sh
-~/Fedora-Hyprland/install.sh
