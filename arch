@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-lsblk
+pacman -S reflector
+reflector -c taiwan -l 20 -p https --save /etc/pacman.d/mirrorlist
 
-pacman-mirrors --fasttrack 10 && sudo pacman -Syyu
+lsblk
 
 echo "Please enter EFI paritition: (example /dev/sda1 or /dev/nvme0n1p1)"
 read EFI
