@@ -2,6 +2,8 @@
 
 lsblk
 
+pacman-mirrors --fasttrack 10 && sudo pacman -Syyu
+
 echo "Please enter EFI paritition: (example /dev/sda1 or /dev/nvme0n1p1)"
 read EFI
 
