@@ -1,7 +1,4 @@
 # Enable service on boot
-sudo systemctl enable --now avahi-daemon
-sudo systemctl --user start sunshine
-sudo systemctl --user enable sunshine
 sudo systemctl enable power-profiles-daemon.service
 
 # ufw firewall
