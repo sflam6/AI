@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# 用戶輸入參數
+echo "請輸入要縮小的分區名稱 (例如 /dev/sda1): "
+read partition_name
+echo "請輸入想分區騰出的空間大小 (例如 20G): "
+read resize_space
+echo "請輸入 EFI 分區的大小 (例如 512M): "
+read efi_size
+echo "請輸入 Swap 分區的大小 (例如 4G): "
+read swap_size
+
+# 縮小現有分區
+echo "正在縮小分區 $partition_name..."
+sudo parted $partition_name resizepart 1 -$resize_space
+if [ $? -ne 0 ]; then
+    echo "縮小分區失敗！"
+    exit 1
+fi
+
+# 計算開始位置
+partition_start=$(sudo parted $partition_name unit s print | grep -oP '^ [0-9]+s' | head -1 | grep -oP '[0-9]+')
+resize_end=$(sudo parted $partition_name unit s print | grep -oP '^ [0-9]+s' | tail -1 | grep -oP '[0-9]+')
+
+# 創建 EFI 分區
+efi_start=$((resize_end + 1))
+efi_end=$((efi_start + $(numfmt --from=iec $efi_size) / 512))
+echo "正在創建 EFI 分區..."
+sudo parted $partition_name mkpart primary fat32 ${efi_start}s ${efi_end}s
+sudo mkfs.fat -F32 ${partition_name}2
+
+# 創建 Swap 分區
+swap_start=$((efi_end + 1))
+swap_end=$((swap_start + $(numfmt --from=iec $swap_size) / 512))
+echo "正在創建 Swap 分區..."
+sudo parted $partition_name mkpart primary linux-swap ${swap_start}s ${swap_end}s
+sudo mkswap ${partition_name}3
+
+# 創建 Linux 文件系統分區
+linux_start=$((swap_end + 1))
+echo "正在創建 Linux 文件系統分區..."
+sudo parted $partition_name mkpart primary ext4 ${linux_start}s 100%
+sudo mkfs.ext4 ${partition_name}4
+
+# 更新 /etc/fstab
+echo "更新 /etc/fstab..."
+UUID_EFI=$(blkid -s UUID -o value ${partition_name}2)
+UUID_SWAP=$(blkid -s UUID -o value ${partition_name}3)
+UUID_LINUX=$(blkid -s UUID -o value ${partition_name}4)
+
+echo "UUID=$UUID_EFI /boot/efi vfat defaults 0 1" | sudo tee -a /etc/fstab
+echo "UUID=$UUID_SWAP none swap sw 0 0" | sudo tee -a /etc/fstab
+echo "UUID=$UUID_LINUX / ext4 defaults 0 1" | sudo tee -a /etc/fstab
+
+echo "分區和文件系統創建完成。請重新啟動系統以應用更改。"
