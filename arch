@@ -78,6 +78,11 @@ pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addon
 pacman -S krita inkscape --noconfirm --needed
 pacman -S avahi ufw --noconfirm --needed
 
+# Printer
+pacman -S cups cups-browsed cups-filters cups-pdf
+pacman -S footmatic-db footmatic-db-engine footmatic-db-gutenprint-ppds footmatic-db-nonfree footmatic-db-nonfree-ppds footmatic-db-ppds
+pacman -S ghostscript gsfonts gutenprint splix system-config-printer
+
 # Gaming
 pacman -S steam lutris mono --noconfirm --needed
 pacman -S wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls --noconfirm --needed
