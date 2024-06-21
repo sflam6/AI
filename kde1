@@ -1,4 +1,6 @@
 # Flatpak packages
+sudo pacman -S flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq
 flatpak install org.winehq.Wine
 flatpak install camp.nook.nookdesktop 
