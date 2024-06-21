@@ -1,2 +1,0 @@
-# Install Linux-zen
-sudo pacman -S linux-zen linux-zen-headers
