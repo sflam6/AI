@@ -2,7 +2,7 @@
 sudo pacman -S linux-zen linux-zen-headers
 
 # Edit grub
-https://techhut.tv/how-to-switch-arch-linux-kernels-lts-zen-hardened/
+# https://techhut.tv/how-to-switch-arch-linux-kernels-lts-zen-hardened/
 
 # Reload Grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
