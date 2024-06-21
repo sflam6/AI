@@ -13,3 +13,49 @@ sudo pacman -S lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32
 sudo pacman -S sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama --noconfirm --needed
 sudo pacman -S ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 --noconfirm --needed
 sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader --noconfirm --needed
+
+# Flatpak packages
+sudo pacman -S flatpak --noconfirm --needed
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq
+flatpak install camp.nook.nookdesktop 
+
+# Edit environment
+sudo sed -i '$a\
+GTK_IM_MODULE=fcitx\
+QT_IM_MODULE=fcitx\
+XMODIFIERS=@im=fcitx\
+SDL_IM_MODULE=fcitx\
+GLFW_IM_MODULE=fcitx' /etc/environment
+
+# yay
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Drivers by yay
+yay -S mkinitcpio-firmware
+yay -S xpadneo-dkms
+
+# Apps by yay
+yay -S sunshine
+yay -S anime-games-launcher-bin
+
+## Firewall settings
+# sunshine firewall setting
+sudo ufw allow 47984/tcp
+sudo ufw allow 47989/tcp
+sudo ufw allow 48010/tcp
+sudo ufw allow 47988/udp
+sudo ufw allow 47998/udp
+sudo ufw allow 47999/udp
+sudo ufw allow 48000/udp
+sudo ufw allow 48002/udp
+sudo ufw allow 48010/udp
+
+# syncthing firewall setting
+sudo ufw allow 22000/tcp
+sudo ufw allow 22000/udp
+sudo ufw allow 21027/udp
+sudo ufw reload
