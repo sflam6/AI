@@ -20,6 +20,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq
 flatpak install camp.nook.nookdesktop 
 
+# honker
+yay -S the-honkers-railway-launcher-bin
+
 # Edit environment
 sudo sed -i '$a\
 GTK_IM_MODULE=fcitx\
