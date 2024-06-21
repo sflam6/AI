@@ -38,7 +38,7 @@ cd yay
 makepkg -si
 
 # Drivers by yay
-yay -S mkinitcpio-firmware
+yay -S mkinitcpio-firmware surfshark-client
 yay -S xpadneo-dkms
 
 # Apps by yay
