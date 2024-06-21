@@ -62,3 +62,9 @@ sudo ufw allow 22000/tcp
 sudo ufw allow 22000/udp
 sudo ufw allow 21027/udp
 sudo ufw reload
+
+# system services
+sudo systemctl enable sddm.service
+sudo systemctl enable sshd.service
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
