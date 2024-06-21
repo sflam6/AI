@@ -69,7 +69,7 @@ pacman -S plasma-meta konsole kwrite dolphin ark plasma-workspace egl-wayland --
 pacman -S sudo firefox noto-fonts-cjk noto-fonts-emoji okular --noconfirm --needed
 pacman -S sudo power-profiles-daemon kwallet kwalletmanager partitionmanager print-manager --noconfirm --needed
 pacman -S fwupd flatpak --noconfirm --needed
-pacman -S qt5-wayland qt6-wayland xwaylandvideobridge --noconfirm --needed
+pacman -S qt5-wayland qt6-wayland xwaylandvideobridge fuse2 unrar --noconfirm --needed
 
 # Printer
 pacman -S cups cups-browsed cups-filters cups-pdf
@@ -78,7 +78,7 @@ pacman -S ghostscript gsfonts gutenprint splix system-config-printer
 
 # Firmware, software
 pacman -Syy && -Syu
-pacman -S flameshot fuse2 unrar libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
+pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
 pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons --noconfirm --needed
 pacman -S krita inkscape --noconfirm --needed
 pacman -S avahi ufw vim --noconfirm --needed
