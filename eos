@@ -23,6 +23,9 @@ flatpak install camp.nook.nookdesktop  --assumeyes
 # honker
 yay -S the-honkers-railway-launcher-bin
 
+# Genshin
+yay -S an-anime-game-launcher-bin
+
 # Edit environment
 sudo sed -i '$a\
 GTK_IM_MODULE=fcitx\
