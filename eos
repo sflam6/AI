@@ -16,9 +16,9 @@ sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulk
 
 # Flatpak packages
 sudo pacman -S flatpak --noconfirm --needed
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq
-flatpak install camp.nook.nookdesktop 
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
+flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq --assumeyes
+flatpak install camp.nook.nookdesktop  --assumeyes
 
 # honker
 yay -S the-honkers-railway-launcher-bin
