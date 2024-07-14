@@ -18,7 +18,7 @@ sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulk
 sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
 flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq --assumeyes
-flatpak install camp.nook.nookdesktop  --assumeyes
+flatpak install camp.nook.nookdesktop dev.lizardbyte.app.Sunshine --assumeyes
 
 # Edit environment
 sudo sed -i '$a\
@@ -36,10 +36,6 @@ makepkg -si
 
 # Drivers by yay
 yay -S mkinitcpio-firmware surfshark-client
-
-# Apps by yay
-yay -S sunshine
-yay -S anime-games-launcher-bin
 
 ## Firewall settings
 # sunshine firewall setting
