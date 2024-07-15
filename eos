@@ -21,7 +21,7 @@ flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zock
 flatpak install camp.nook.nookdesktop dev.lizardbyte.app.Sunshine --assumeyes
 
 # AMD gpu
-sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon --noconfirm --needed
+sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
 
 # Edit environment
 sudo sed -i '$a\
@@ -41,7 +41,7 @@ makepkg -si
 yay -S mkinitcpio-firmware surfshark-client
 
 ## Firewall settings
-# sunshine firewall setting
+# sunshine firewall and setting
 sudo ufw allow 47984/tcp
 sudo ufw allow 47989/tcp
 sudo ufw allow 48010/tcp
@@ -51,6 +51,10 @@ sudo ufw allow 47999/udp
 sudo ufw allow 48000/udp
 sudo ufw allow 48002/udp
 sudo ufw allow 48010/udp
+sudo systemctl enable --now avahi-daemon
+systemctl --user start sunshine
+systemctl --user enable sunshine
+systemctl --user status sunshine
 
 # syncthing firewall setting
 sudo ufw allow 22000/tcp
