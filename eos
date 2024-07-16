@@ -18,7 +18,7 @@ sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulk
 sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
 flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq --assumeyes
-flatpak install camp.nook.nookdesktop dev.lizardbyte.app.Sunshine --assumeyes
+flatpak install camp.nook.nookdesktop --assumeyes
 
 # AMD gpu
 sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
@@ -66,13 +66,14 @@ sudo ufw reload
 ## Add sunshine pacman repo by lizrdbyte
 sudo sed -i '$ a\
 \
-[lizardbyte-beta]\
+[lizardbyte]\
 SigLevel = Optional\
-Server = https://github.com/LizardByte/pacman-repo/releases/download/beta' /etc/pacman.conf
+Server = https://github.com/LizardByte/pacman-repo/releases/latest/download' /etc/pacman.conf
 
 ## Install sunshine
 sudo pacman -Syy &&-Syu
 sudo pacman -S lizardbyte/sunshine
+sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
 
 ## sunshine firewall and system setting
 sudo ufw allow 47984/tcp
