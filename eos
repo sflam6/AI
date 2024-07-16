@@ -99,7 +99,7 @@ sudo systemctl enable NetworkManager.service
 yes | yay -S the-honkers-railway-launcher-bin
 
 # Genshin
-yes | ay -S an-anime-game-launcher-bin
+yes | yay -S an-anime-game-launcher-bin
 
 # zzz
 yes | yay -S sleepy-launcher-bin
