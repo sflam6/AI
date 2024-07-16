@@ -23,6 +23,9 @@ flatpak install camp.nook.nookdesktop dev.lizardbyte.app.Sunshine --assumeyes
 # AMD gpu
 sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
 
+# Auto auth all tb devices
+sudo echo 'ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"' | sudo tee /etc/udev/rules.d/99-removable.rules
+
 # Edit environment
 sudo sed -i '$a\
 GTK_IM_MODULE=fcitx\
