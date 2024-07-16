@@ -49,7 +49,7 @@ cd yay
 makepkg -si
 
 # Drivers by yay
-yay -S mkinitcpio-firmware surfshark-client
+yes | yay -S mkinitcpio-firmware surfshark-client
 
 ## Firewall settings
 sudo ufw enable
@@ -96,10 +96,10 @@ sudo systemctl enable bluetooth.service
 sudo systemctl enable NetworkManager.service
 
 # honker
-yay -S the-honkers-railway-launcher-bin
+yes | yay -S the-honkers-railway-launcher-bin
 
 # Genshin
-yay -S an-anime-game-launcher-bin
+yes | ay -S an-anime-game-launcher-bin
 
 # zzz
-yay -S sleepy-launcher-bin
+yes | yay -S sleepy-launcher-bin
