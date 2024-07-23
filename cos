@@ -1,3 +1,4 @@
+
 # Software
 sudo pacman -Syy && -Syu
 sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
@@ -113,3 +114,4 @@ sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
+fc-cache -fv
