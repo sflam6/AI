@@ -105,6 +105,10 @@ yes | yay -S an-anime-game-launcher-bin
 # zzz
 yes | yay -S sleepy-launcher-bin
 
+# konsave
+yes | yay -S konsave
+konsave -i ~/ai/mykde.knsv
+
 # Edit grub
 sudo sed -i "s/GRUB_DEFAULT='0'/GRUB_DEFAULT=saved/" /etc/default/grub
 sudo sed -i "s/GRUB_DISABLE_SUBMENU='false'/GRUB_DISABLE_SUBMENU=y/" /etc/default/grub
