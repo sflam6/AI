@@ -103,3 +103,11 @@ yes | yay -S an-anime-game-launcher-bin
 
 # zzz
 yes | yay -S sleepy-launcher-bin
+
+# konsave
+yes | yay -S konsave
+konsave -i ~/ai/mykde.knsv
+konsave -a mykde
+
+cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
+fc-cache -fv
