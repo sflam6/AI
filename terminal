@@ -1,0 +1,12 @@
+# Installing fish
+sudo pacman -S fish --noconfirm
+chsh -s /usr/bin/fish
+
+# Install on my posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+sudo oh-my-posh font install meslo
+fc-cache -fv
+
+# Edit fish profile
+sed sed -i '3i\oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/markbull.omp.json | source' ~/.config/fish/config.fish
+exec fish
