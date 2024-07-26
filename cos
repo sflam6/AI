@@ -122,3 +122,5 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 mkdir ~/.config/fontconfig
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
+
+sh ~/ai/terminal
