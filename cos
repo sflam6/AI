@@ -1,4 +1,4 @@
-
+e
 # Software
 sudo pacman -Syy && -Syu
 sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
@@ -123,7 +123,7 @@ mkdir ~/.config/fontconfig
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
 
-
+sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=2 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
 
 # modify terminal setting to fish and oh-my-posh
 sh ~/ai/terminal
