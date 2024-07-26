@@ -123,6 +123,10 @@ mkdir ~/.config/fontconfig
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
 
+
+
+# modify terminal setting to fish and oh-my-posh
 sh ~/ai/terminal
 
+# remove yay folder
 rm -rf ~/yay
