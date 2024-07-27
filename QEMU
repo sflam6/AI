@@ -1,5 +1,5 @@
 #Install QEMU packages
-sudo pacman -S archlinux-keyring qemu-full virt-manager virt-viewer edk2-ovmf dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables virglrenderer --noconfirm --needed
+sudo pacman -S archlinux-keyring qemu-full virt-manager virt-viewer edk2-ovmf dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables virglrenderer
 
 #Activate systemctl
 sudo systemctl enable --now libvirtd
@@ -13,7 +13,8 @@ sudo usermod -a -G kvm $USER
 sudo usermod -a -G kvm root
 
 # edit /etc/polkit-1/rules.d/50-libvirt.rules
-sed -i $a\
+sudo touch /etc/polkit-1/rules.d/50-libvirt.rules
+sudo sed -i '$a\
 polkit.addRule(function(action, subject) {\
     if (action.id == "org.libvirt.unix.manage" &&\
         subject.isInGroup("kvm")) {\
@@ -22,4 +23,3 @@ polkit.addRule(function(action, subject) {\
 });' /etc/polkit-1/rules.d/50-libvirt.rules
 
 sudo systemctl restart libvirtd
-
