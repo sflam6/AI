@@ -1,9 +1,13 @@
+# modify terminal setting to fish and oh-my-posh
+sh ~/ai/terminal
+
 # Software
 sudo pacman -Syy && -Syu
 sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
 sudo pacman -S krita inkscape blueman corectrl --noconfirm --needed
 sudo pacman -S avahi xorg xorg-server ufw vim plasma-thunderbolt partitionmanager discover filelight octopi --noconfirm --needed
+sudo pacman -S firefox okular wine-staging winestricks --noconfirm --needed
 
 # Gaming
 sudo pacman -S steam lutris mono --noconfirm --needed
@@ -109,5 +113,23 @@ yes | yay -S konsave
 konsave -i ~/ai/mykde.knsv
 konsave -a mykde
 
+# Edit grub
+sudo sed -i "s/GRUB_DISABLE_SUBMENU='false'/GRUB_DISABLE_SUBMENU=y/" /etc/default/grub
+sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
+
+# Reload Grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Edit steam scaling
+sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=2 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
+sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=2 /usr/bin/steam-runtime -silent %U|' ~/.local/share/applications/steam.desktop
+cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
+
+#font config
+mkdir ~/.config/fontconfig
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
+
+# remove working folders
+rm -rf ~/yay
+rm -rf ~/ai
