@@ -1,4 +1,3 @@
-ee
 # Software
 sudo pacman -Syy && -Syu
 sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
