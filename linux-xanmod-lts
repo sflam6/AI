@@ -1,0 +1,25 @@
+# Add chaotic aur keyrings
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+# Edit pacman.conf
+sudo sed -i '$ a\
+\
+[chaotic-aur]\
+Include = /etc/pacman.d/chaotic-mirrorlist' /etc/pacman.conf
+
+# Install Linux-xanmod-lts
+sudo pacman -S linux-xanmod-lts
+
+# Edit grub
+sudo sed -i "s/GRUB_DEFAULT='0'/GRUB_DEFAULT=saved/" /etc/default/grub
+sudo sed -i "s/GRUB_DISABLE_SUBMENU='false'/GRUB_DISABLE_SUBMENU=y/" /etc/default/grub
+sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
+
+# Reload Grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# ref
+# https://techhut.tv/how-to-switch-arch-linux-kernels-lts-zen-hardened/
