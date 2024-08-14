@@ -78,10 +78,7 @@ sudo sed -i '$ a\
 \
 [lizardbyte]\
 SigLevel = Optional\
-Server = https://github.com/LizardByte/pacman-repo/releases/latest/download\
-\
-[chaotic-aur]\
-Include = /etc/pacman.d/chaotic-mirrorlist' /etc/pacman.conf
+Server = https://github.com/LizardByte/pacman-repo/releases/latest/download\' /etc/pacman.conf
 
 ## Install sunshine
 sudo pacman -Syy &&-Syu --noconfirm --needed
