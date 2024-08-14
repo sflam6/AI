@@ -66,13 +66,22 @@ sudo ufw allow 22000/udp
 sudo ufw allow 21027/udp
 sudo ufw reload
 
-# Sunshine
-## Add sunshine pacman repo by lizrdbyte
+# Sunshine & xanmod
+## Add sunshine & xanmod pacman repo by lizrdbyte
+
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
 sudo sed -i '$ a\
 \
 [lizardbyte]\
 SigLevel = Optional\
-Server = https://github.com/LizardByte/pacman-repo/releases/latest/download' /etc/pacman.conf
+Server = https://github.com/LizardByte/pacman-repo/releases/latest/download\
+\
+[chaotic-aur]\
+Include = /etc/pacman.d/chaotic-mirrorlist' /etc/pacman.conf
 
 ## Install sunshine
 sudo pacman -Syy &&-Syu --noconfirm --needed
