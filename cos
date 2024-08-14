@@ -4,7 +4,7 @@ sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm -
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
 sudo pacman -S krita inkscape blueman corectrl --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim plasma-thunderbolt partitionmanager discover filelight octopi --noconfirm --needed
-sudo pacman -S firefox okular wine-staging winestricks --noconfirm --needed
+sudo pacman -S firefox okular wine-staging winestricks syncthing --noconfirm --needed
 
 # Gaming
 sudo pacman -S steam lutris mono --noconfirm --needed
@@ -18,7 +18,7 @@ sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulk
 # Flatpak packages
 sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
-flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.github.zocker_160.SyncThingy com.logseq.Logseq --assumeyes
+flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.logseq.Logseq --assumeyes
 flatpak install camp.nook.nookdesktop --assumeyes
 
 # AMD gpu
@@ -42,6 +42,9 @@ sudo systemctl start ufw
 sudo systemctl enable sddm.service
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable sshd.service
+cd ~/.config/autostart
+wget https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-desktop/syncthing-start.desktop
+
 
 # yay
 sudo pacman -S git base-devel --noconfirm --needed 
