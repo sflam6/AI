@@ -3,7 +3,7 @@ sudo pacman -S fish --noconfirm
 sudo chsh -s /usr/bin/fish
 
 # Install on my posh
-curl -s https://ohmyposh.dev/install.sh | bash -s
+yay -S oh-my-posh
 sudo oh-my-posh font install meslo
 fc-cache -fv
 
