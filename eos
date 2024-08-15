@@ -127,5 +127,5 @@ cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
 
 # remove working folders
-rm -rf ~/yay
-rm -rf ~/ai
+sudo rm -rf ~/yay
+sudo rm -rf ~/ai
