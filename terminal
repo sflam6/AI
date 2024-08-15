@@ -3,11 +3,11 @@ sudo pacman -S fish --noconfirm
 sudo chsh -s /usr/bin/fish
 
 # Install on my posh
-yay -S oh-my-posh
+yes | yay -S oh-my-posh
 sudo oh-my-posh font install meslo
 fc-cache -fv
 
 # Edit fish profile
-sed -i '2 a oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/markbull.omp.json | source' ~/.config/fish/config.fish
+sed -i '$a\ oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/markbull.omp.json | source' ~/.config/fish/config.fish
 sed '4d' ~/.config/fish/config.fish
 exec fish
