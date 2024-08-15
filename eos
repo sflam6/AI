@@ -44,6 +44,7 @@ sudo systemctl start ufw
 sudo systemctl enable sddm.service
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable sshd.service
+mkdir ~/.config/autostart
 cd ~/.config/autostart
 wget https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-desktop/syncthing-start.desktop
 
