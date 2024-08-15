@@ -70,7 +70,6 @@ sudo ufw reload
 # Sunshine
 ## Add sunshine pacman repo by lizrdbyte
 sudo sed -i '$ a\
-
 [lizardbyte]\
 SigLevel = Optional\
 Server = https://github.com/LizardByte/pacman-repo/releases/latest/download\' /etc/pacman.conf
