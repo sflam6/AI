@@ -1,6 +1,3 @@
-# modify terminal setting to fish and oh-my-posh
-sh ~/ai/terminal
-
 # Install xanmod
 sh ~/ai/linux-xanmod-lts
 
@@ -126,6 +123,9 @@ cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 mkdir ~/.config/fontconfig
 cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
+
+# modify terminal setting to fish and oh-my-posh
+sh ~/ai/terminal
 
 # remove working folders
 rm -rf ~/yay
