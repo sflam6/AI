@@ -130,6 +130,9 @@ sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCA
 sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' ~/.local/share/applications/steam.desktop
 cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 
+# Edit SDDM interface setting
+sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
+
 # modify terminal setting to fish and oh-my-fish
 sh ~/ai/terminal
 
