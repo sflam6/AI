@@ -4,7 +4,7 @@ sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm -
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
 sudo pacman -S krita inkscape blueman corectrl --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim plasma-thunderbolt partitionmanager discover filelight octopi --noconfirm --needed
-sudo pacman -S firefox okular wine-staging winestricks syncthing --noconfirm --needed
+sudo pacman -S firefox okular wine-staging winestricks syncthing neofetch --noconfirm --needed
 
 # Gaming
 sudo pacman -S steam lutris mono --noconfirm --needed
@@ -42,6 +42,7 @@ sudo systemctl start ufw
 sudo systemctl enable sddm.service
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable sshd.service
+mkdir ~/.config/autostart
 cd ~/.config/autostart
 wget https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-desktop/syncthing-start.desktop
 
@@ -134,5 +135,5 @@ cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 sh ~/ai/terminal
 
 # remove working folders
-rm -rf ~/yay
-rm -rf ~/ai
+sudo rm -rf ~/yay
+sudo rm -rf ~/ai
