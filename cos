@@ -46,7 +46,6 @@ mkdir ~/.config/autostart
 cd ~/.config/autostart
 wget https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-desktop/syncthing-start.desktop
 
-
 # yay
 sudo pacman -S git base-devel --noconfirm --needed 
 git clone https://aur.archlinux.org/yay.git
