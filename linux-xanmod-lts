@@ -1,8 +1,8 @@
 # Add chaotic aur keyrings
-sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com --noconfirm
-sudo pacman-key --lsign-key 3056513887B78AEB --noconfirm
-sudo pacman -U  'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' --noconfirm
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+yes | sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+yes | sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 # Edit pacman.conf
 sudo sed -i '$ a\
