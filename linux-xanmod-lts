@@ -11,6 +11,8 @@ sudo sed -i '$ a\
 Include = /etc/pacman.d/chaotic-mirrorlist' /etc/pacman.conf
 
 # Install Linux-xanmod-lts
+sudo pacman -Syy
+sudo pacman -Syu
 sudo pacman -S linux-xanmod-lts
 
 # Edit grub
