@@ -2,12 +2,6 @@
 sudo pacman -S fish --noconfirm
 sudo chsh -s /usr/bin/fish
 
-# Install on my posh
-su
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-sudo oh-my-posh font install meslo
-fc-cache -fv
-
-# Edit fish profile
-sed -i '$a\ oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/markbull.omp.json | source' ~/.config/fish/config.fish
-exec fish
+# Install oh-my-fish
+curl -L https://get.oh-my.fish | fish
+omf install agnoster
