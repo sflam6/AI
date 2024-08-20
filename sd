@@ -7,6 +7,12 @@ sudo pacman -S blueman discover --noconfirm --needed
 sudo systemctl enable bluetooth.service
 sudo systemctl enable NetworkManager.service
 
+# yay
+sudo pacman -S git base-devel --noconfirm --needed 
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm
+
 # honker
 yes | yay -S the-honkers-railway-launcher-bin
 
