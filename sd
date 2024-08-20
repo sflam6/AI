@@ -1,0 +1,26 @@
+# Software
+sudo pacman -Syy && -Syu
+sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
+sudo pacman -S blueman discover --noconfirm --needed
+
+# system services
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
+
+# honker
+yes | yay -S the-honkers-railway-launcher-bin
+
+# Genshin
+yes | yay -S an-anime-game-launcher-bin
+
+# zzz
+yes | yay -S sleepy-launcher-bin
+
+#font config
+mkdir ~/.config/fontconfig
+cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
+fc-cache -fv
+
+# remove working folders
+sudo rm -rf ~/yay
+sudo rm -rf ~/ai
