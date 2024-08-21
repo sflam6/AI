@@ -123,9 +123,7 @@ cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 sh ~/ai/terminal
 
 #font config
-mkdir ~/.config/fontconfig
-cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
-fc-cache -fv
+sh ~/ai/font
 
 # remove working folders
 sudo rm -rf ~/yay
