@@ -126,9 +126,7 @@ sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #font config
-mkdir ~/.config/fontconfig
-cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
-fc-cache -fv
+sh ~/ai/font
 
 # Edit steam scaling
 sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
