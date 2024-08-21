@@ -66,6 +66,11 @@ sudo ufw allow 22000/udp
 sudo ufw allow 21027/udp
 sudo ufw reload
 
+# KDEconnect firewall setting
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+sudo ufw reload
+
 # Sunshine
 ## Add sunshine pacman repo by lizrdbyte
 sudo sed -i '$ a\
