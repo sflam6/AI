@@ -139,6 +139,12 @@ sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.
 # modify terminal setting to fish and oh-my-fish
 sh ~/ai/terminal
 
+# Wake on lan
+sh ~/ai/wol
+
+# zerotier
+sh ~/ai/zerotier
+
 # remove working folders
 sudo rm -rf ~/yay
 sudo rm -rf ~/ai
