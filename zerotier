@@ -1,5 +1,5 @@
 # Install zero-tier
-sudo pacman -S zerotier-one
+sudo pacman -S zerotier-one --noconfirm --needed
 
 # Firewall and services
 sudo ufw allow 9993/udp
