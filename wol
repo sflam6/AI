@@ -1,11 +1,8 @@
 # Install ethtool
-sudo pacman -S ethtool
-
-# confirm wol device
-ip a
-
-# confirm wol status
-sudo ethtool enp2s0
+sudo pacman -S ethtool --noconfirm -needed
 
 # set wol on work
 sudo ethtool -s enp2s0 wol g
+
+yes | yay -S wol-systemd
+sudo systemctl enable wol@enp2s0
