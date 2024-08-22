@@ -1,0 +1,11 @@
+# Install ethtool
+sudo pacman -S ethtool
+
+# confirm wol device
+ip a
+
+# confirm wol status
+sudo ethtool enp2s0
+
+# set wol on work
+sudo ethtool -s enp2s0 wol g
