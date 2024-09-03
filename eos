@@ -109,6 +109,9 @@ yes | yay -S an-anime-game-launcher-bin
 # zzz
 yes | yay -S sleepy-launcher-bin
 
+# Caffein-ng not sleeping for full screen program
+yes | yay -S caffeine-ng
+
 # konsave
 yes | yay -S konsave
 konsave -i ~/ai/mykde.knsv
