@@ -1,5 +1,5 @@
 # Install ethtool
-sudo pacman -S ethtool --noconfirm -needed
+sudo pacman -S ethtool --noconfirm --needed
 
 # set wol on work
 sudo ethtool -s enp2s0 wol g
