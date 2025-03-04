@@ -119,7 +119,7 @@ yes | yay -S zen-browser-bin
 
 # konsave
 yes | yay -S konsave
-konsave -i ~/ai/mykde.knsv
+konsave -i ~/AI/mykde.knsv
 konsave -a mykde
 
 # Edit grub
@@ -130,7 +130,7 @@ sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #font config
-sh ~/ai/font
+sh ~/AI/font
 
 # Edit steam scaling
 sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
@@ -141,11 +141,11 @@ cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
 
 # modify terminal setting to fish and oh-my-fish
-sh ~/ai/terminal
+sh ~/AI/terminal
 
 # Wake on lan
-sh ~/ai/wol
+sh ~/AI/wol
 
 # remove working folders
 sudo rm -rf ~/yay
-sudo rm -rf ~/ai
+sudo rm -rf ~/AI
