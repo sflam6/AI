@@ -1,0 +1,153 @@
+# Software
+sudo pacman -Syy && -Syu
+sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
+sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
+sudo pacman -S krita inkscape blueman corectrl xpadneo-dkms --noconfirm --needed
+sudo pacman -S avahi xorg-server ufw vim plasma-thunderbolt partitionmanager discover filelight octopi --noconfirm --needed
+sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif --noconfirm --needed
+
+# Gaming
+sudo pacman -S steam lutris mono --noconfirm --needed
+sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls --noconfirm --needed
+sudo pacman -S mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error --noconfirm --needed
+sudo pacman -S lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo --noconfirm --needed
+sudo pacman -S sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama --noconfirm --needed
+sudo pacman -S ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 --noconfirm --needed
+sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader --noconfirm --needed
+
+# Flatpak packages
+sudo pacman -S flatpak --noconfirm --needed
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
+flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.logseq.Logseq --assumeyes
+flatpak install camp.nook.nookdesktop --assumeyes
+
+# AMD gpu
+sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
+
+# Auto auth all tb devices
+sudo echo 'ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"' | sudo tee /etc/udev/rules.d/99-removable.rules
+
+# Edit environment
+sudo sed -i '$a\
+GTK_IM_MODULE=fcitx\
+QT_IM_MODULE=fcitx\
+XMODIFIERS=@im=fcitx\
+SDL_IM_MODULE=fcitx\
+GLFW_IM_MODULE=fcitx' /etc/environment
+
+# Enable service
+sudo ufw enable
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo systemctl enable sddm.service
+sudo systemctl enable NetworkManager.service
+sudo systemctl enable sshd.service
+mkdir ~/.config/autostart
+wget https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-desktop/syncthing-start.desktop
+mv ~/syncthing-start.desktop ~/.config/autostart/syncthing-start.desktop
+
+# yay
+sudo pacman -S git base-devel --noconfirm --needed 
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm
+
+# Drivers by yay
+yes | yay -S mkinitcpio-firmware surfshark-client
+
+## Firewall settings
+sudo ufw enable
+sudo systemctl enable ufw
+sudo systemctl start ufw
+
+# syncthing firewall setting
+sudo ufw allow 22000/tcp
+sudo ufw allow 22000/udp
+sudo ufw allow 21027/udp
+sudo ufw reload
+
+# KDEconnect firewall setting
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+sudo ufw reload
+
+# Sunshine
+## Add sunshine pacman repo by lizrdbyte
+sudo sed -i '$ a\
+\
+[lizardbyte]\
+SigLevel = Optional\
+Server = https://github.com/LizardByte/pacman-repo/releases/latest/download' /etc/pacman.conf
+
+## Install sunshine
+sudo pacman -Syy &&-Syu --noconfirm --needed
+sudo pacman -S lizardbyte/sunshine --noconfirm --needed
+sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
+
+## sunshine firewall and system setting
+sudo ufw allow 47984/tcp
+sudo ufw allow 47989/tcp
+sudo ufw allow 48010/tcp
+sudo ufw allow 47988/udp
+sudo ufw allow 47998/udp
+sudo ufw allow 47999/udp
+sudo ufw allow 48000/udp
+sudo ufw allow 48002/udp
+sudo ufw allow 48010/udp
+sudo systemctl enable --now avahi-daemon
+systemctl --user start sunshine
+systemctl --user enable sunshine
+
+# system services
+sudo systemctl enable sddm.service
+sudo systemctl enable sshd.service
+sudo systemctl enable bluetooth.service
+sudo systemctl enable NetworkManager.service
+
+# honker
+yes | yay -S the-honkers-railway-launcher-bin
+
+# Genshin
+yes | yay -S an-anime-game-launcher-bin
+
+# zzz
+yes | yay -S sleepy-launcher-bin
+
+# Caffein-ng not sleeping for full screen program
+yes | yay -S caffeine-ng
+
+# konsave
+yes | yay -S konsave
+konsave -i ~/ai/mykde.knsv
+konsave -a mykde
+
+# Edit grub
+sudo sed -i "s/GRUB_DISABLE_SUBMENU='false'/GRUB_DISABLE_SUBMENU=y/" /etc/default/grub
+sudo sed -i "s/GRUB_TIMEOUT='5'/GRUB_TIMEOUT='1'/" /etc/default/grub
+
+# Reload Grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+#font config
+sh ~/ai/font
+
+# Edit steam scaling
+sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
+sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' ~/.local/share/applications/steam.desktop
+cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
+
+# Edit SDDM interface setting
+sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
+
+# modify terminal setting to fish and oh-my-fish
+sh ~/ai/terminal
+
+# Wake on lan
+sh ~/ai/wol
+
+# zerotier
+sh ~/ai/zerotier
+
+# remove working folders
+sudo rm -rf ~/yay
+sudo rm -rf ~/ai
