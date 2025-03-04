@@ -20,7 +20,7 @@ sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
 flatpak install flathub com.spotify.Client net.davidotek.pupgui2 --assumeyes
 flatpak install camp.nook.nookdesktop --assumeyes
-flatpak install flathub md.obsidian.Obsidian
+flatpak install flathub md.obsidian.Obsidian --assumeyes
 
 # AMD gpu
 sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
