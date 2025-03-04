@@ -1,4 +1,4 @@
 #font config
 mkdir ~/.config/fontconfig
-cp ~/ai/font.conf ~/.config/fontconfig/fonts.conf
+cp ~/AI/font.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
