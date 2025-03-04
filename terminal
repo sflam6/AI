@@ -4,4 +4,4 @@ sudo chsh -s /usr/bin/fish
 
 # Install oh-my-fish
 curl -L https://get.oh-my.fish | fish
-omf install agnoster
+omf install toaster
