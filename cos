@@ -1,9 +1,9 @@
 # Software
 sudo pacman -Syy && -Syu
-sudo pacman -S flameshot  libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
+sudo pacman -S libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
-sudo pacman -S krita inkscape blueman corectrl xpadneo-dkms --noconfirm --needed
-sudo pacman -S avahi xorg-server ufw vim plasma-thunderbolt partitionmanager discover filelight octopi --noconfirm --needed
+sudo pacman -S krita inkscape blueman --noconfirm --needed
+sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
 sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif --noconfirm --needed
 
 # Gaming
@@ -18,8 +18,9 @@ sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulk
 # Flatpak packages
 sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
-flatpak install flathub com.spotify.Client net.davidotek.pupgui2 com.logseq.Logseq --assumeyes
+flatpak install flathub com.spotify.Client net.davidotek.pupgui2 --assumeyes
 flatpak install camp.nook.nookdesktop --assumeyes
+flatpak install flathub md.obsidian.Obsidian
 
 # AMD gpu
 sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
@@ -107,14 +108,14 @@ sudo systemctl enable NetworkManager.service
 # honker
 yes | yay -S the-honkers-railway-launcher-bin
 
-# Genshin
-yes | yay -S an-anime-game-launcher-bin
-
 # zzz
 yes | yay -S sleepy-launcher-bin
 
 # Caffein-ng not sleeping for full screen program
 yes | yay -S caffeine-ng
+
+# Zen browser
+yes | yay -S zen-browser-bin
 
 # konsave
 yes | yay -S konsave
@@ -144,9 +145,6 @@ sh ~/ai/terminal
 
 # Wake on lan
 sh ~/ai/wol
-
-# zerotier
-sh ~/ai/zerotier
 
 # remove working folders
 sudo rm -rf ~/yay
