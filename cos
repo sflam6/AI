@@ -30,8 +30,6 @@ sudo echo 'ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{
 
 # Edit environment
 sudo sed -i '$a\
-GTK_IM_MODULE=fcitx\
-QT_IM_MODULE=fcitx\
 XMODIFIERS=@im=fcitx\
 SDL_IM_MODULE=fcitx\
 GLFW_IM_MODULE=fcitx' /etc/environment
@@ -131,11 +129,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #font config
 sh ~/AI/font
-
-# Edit steam scaling
-sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' /usr/share/applications/steam.desktop
-sudo sed -i 's|Exec=/usr/bin/steam-runtime %U|Exec=env STEAM_FORCE_DESKTOPUI_SCALING=1 /usr/bin/steam-runtime -silent %U|' ~/.local/share/applications/steam.desktop
-cp ~/.local/share/applications/steam.desktop ~/.config/autostart/steam.desktop
 
 # Edit SDDM interface setting
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
