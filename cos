@@ -14,6 +14,7 @@ sudo pacman -S lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32
 sudo pacman -S sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama --noconfirm --needed
 sudo pacman -S ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 --noconfirm --needed
 sudo pacman -S lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader --noconfirm --needed
+sudo pacman -S mangohud lib32-mangohud gamescope gamemode lib32-gamemode
 
 # Flatpak packages
 sudo pacman -S flatpak --noconfirm --needed
