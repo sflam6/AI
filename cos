@@ -1,6 +1,6 @@
 # Software
 sudo pacman -Syy && -Syu
-sudo pacman -S libreoffice-still-zh-tw telegram-desktop --noconfirm --needed
+sudo pacman -S libreoffice-still-zh-tw telegram-desktop kitty --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
 sudo pacman -S krita inkscape blueman --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
@@ -116,6 +116,9 @@ yes | yay -S caffeine-ng
 # Zen browser
 yes | yay -S zen-browser-bin
 
+# Yakuake
+yes | yay -S yakuake
+
 # konsave
 yes | yay -S konsave
 konsave -i ~/AI/mykde.knsv
@@ -130,6 +133,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #font config
 sh ~/AI/font
+
+# Kitty config
+cp ~/AI/kitt.conf ~/.config/kitty/kitty.conf
 
 # Edit SDDM interface setting
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
