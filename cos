@@ -136,6 +136,7 @@ sh ~/AI/font
 
 # Kitty config
 cp ~/AI/kitt.conf ~/.config/kitty/kitty.conf
+cp ~/AI/current-theme.conf ~/.config/kitty/current-theme.conf
 
 # Edit SDDM interface setting
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
