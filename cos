@@ -135,7 +135,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sh ~/AI/font
 
 # Kitty config
-cp ~/AI/kitt.conf ~/.config/kitty/kitty.conf
+cp ~/AI/kitty.conf ~/.config/kitty/kitty.conf
 cp ~/AI/current-theme.conf ~/.config/kitty/current-theme.conf
 
 # Edit SDDM interface setting
