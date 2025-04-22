@@ -1,7 +1,7 @@
 # Software
 sudo pacman -Syy && -Syu
 sudo pacman -S libreoffice-still-zh-tw telegram-desktop kitty yazi --noconfirm --needed
-sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord --noconfirm --needed
+sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord ttf-meslo-nerd --noconfirm --needed
 sudo pacman -S krita inkscape blueman --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
 sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif --noconfirm --needed
