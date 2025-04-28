@@ -4,7 +4,7 @@ sudo pacman -S libreoffice-still-zh-tw telegram-desktop kitty yazi --noconfirm -
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord ttf-meslo-nerd --noconfirm --needed
 sudo pacman -S krita inkscape blueman --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
-sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif --noconfirm --needed
+sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif ghostty --noconfirm --needed
 
 # Gaming
 sudo pacman -S steam lutris mono --noconfirm --needed
@@ -19,9 +19,14 @@ sudo pacman -S mangohud lib32-mangohud gamescope gamemode lib32-gamemode
 # Flatpak packages
 sudo pacman -S flatpak --noconfirm --needed
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo --assumeyes
-flatpak install flathub com.spotify.Client net.davidotek.pupgui2 --assumeyes
-flatpak install camp.nook.nookdesktop --assumeyes
+flatpak remote-add --if-not-exists launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo --assumeyes
 flatpak install flathub md.obsidian.Obsidian --assumeyes
+flatpak install launcher.moe moe.launcher.an-anime-game-launcher --assumeyes
+flatpak run com.github.Matoking.protontricks --assumeyes
+flatpak run com.github.tchx84.Flatseal --assumeyes
+flatpak run dev.alextren.Spot --assumeyes
+--assumeyes
+--assumeyes
 
 # AMD gpu
 sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon nvtop --noconfirm --needed
@@ -103,12 +108,6 @@ sudo systemctl enable sddm.service
 sudo systemctl enable sshd.service
 sudo systemctl enable bluetooth.service
 sudo systemctl enable NetworkManager.service
-
-# honker
-yes | yay -S the-honkers-railway-launcher-bin
-
-# zzz
-yes | yay -S sleepy-launcher-bin
 
 # Caffein-ng not sleeping for full screen program
 yes | yay -S caffeine-ng
