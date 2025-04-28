@@ -1,6 +1,6 @@
 # Software
 sudo pacman -Syy && -Syu
-sudo pacman -S libreoffice-still-zh-tw telegram-desktop kitty yazi --noconfirm --needed
+sudo pacman -S libreoffice-still-zh-tw telegram-desktop yazi --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord ttf-meslo-nerd --noconfirm --needed
 sudo pacman -S krita inkscape blueman --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
@@ -132,10 +132,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #font config
 sh ~/AI/font
-
-# Kitty config
-cp ~/AI/kitty.conf ~/.config/kitty/kitty.conf
-cp ~/AI/current-theme.conf ~/.config/kitty/current-theme.conf
 
 # Edit SDDM interface setting
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
