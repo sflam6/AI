@@ -2,7 +2,7 @@
 sudo pacman -Syy && -Syu
 sudo pacman -S libreoffice-still-zh-tw telegram-desktop yazi --noconfirm --needed
 sudo pacman -S fcitx5-im fcitx5-qt fcitx5-gtk fcitx5-table-extra fcitx5-chinese-addons fcitx5-nord ttf-meslo-nerd --noconfirm --needed
-sudo pacman -S krita inkscape blueman --noconfirm --needed
+sudo pacman -S krita inkscape blueman sunshine --noconfirm --needed
 sudo pacman -S avahi xorg-server ufw vim neovim plasma-thunderbolt partitionmanager discover filelight --noconfirm --needed
 sudo pacman -S firefox okular wine-staging winetricks syncthing neofetch kimageformats libheif ghostty --noconfirm --needed
 
@@ -75,14 +75,6 @@ sudo ufw reload
 sudo ufw allow 1714:1764/udp
 sudo ufw allow 1714:1764/tcp
 sudo ufw reload
-
-# Sunshine
-## Add sunshine pacman repo by lizrdbyte
-sudo sed -i '$ a\
-\
-[lizardbyte]\
-SigLevel = Optional\
-Server = https://github.com/LizardByte/pacman-repo/releases/latest/download' /etc/pacman.conf
 
 ## Install sunshine
 sudo pacman -Syy &&-Syu --noconfirm --needed
