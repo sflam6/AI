@@ -93,7 +93,8 @@ sudo systemctl enable bluetooth.service
 sudo systemctl enable NetworkManager.service
 
 # yay programs
-yes | yay -S caffeine-ng surfshark-client zen-browser-bin catppuccin-fcitx5-git anime-games-launcher-bin anime-games-launcher-bin
+yes | yay -S caffeine-ng surfshark-client zen-browser-bin catppuccin-fcitx5-git anime-games-launcher-bin anime-games-launcher-bin 
+yes | yay -S plasma6-applets-panel-colorizer plasma6-applets-plasmusic-toolbar
 
 # konsave
 yes | yay -S konsave
