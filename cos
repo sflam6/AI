@@ -129,7 +129,7 @@ sh ~/AI/font
 sudo sed -i 's/Font=/Font=Noto Sans CJK TC/g' /usr/lib/sddm/sddm.conf.d/default.conf
 
 # modify terminal setting to fish and oh-my-fish
-sh ~/AI/terminal
+sh ~/AI/fish
 
 # Wake on lan
 sh ~/AI/wol
