@@ -1,9 +1,0 @@
-# Install zero-tier
-sudo pacman -S zerotier-one --noconfirm --needed
-
-# Firewall and services
-sudo ufw allow 9993/udp
-sudo ufw reload
-sudo systemctl start zerotier-one
-sudo systemctl enable zerotier-one
-sudo zerotier-cli join 60ee7c034a7b8054
